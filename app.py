@@ -46,8 +46,8 @@ def categories():
 		errorMes = {"error" : True, "message" : str(e)}
 		return errorMes
 	finally:
-			cursor.close()
-			connection.close()
+		cursor.close()
+		connection.close()
 
 @app.route("/api/attraction/<attractionId>")
 def attractionID(attractionId):
@@ -76,8 +76,8 @@ def attractionID(attractionId):
 			errorMes = {"error" : True, "message" : str(e)}
 			return errorMes
 	finally:
-			cursor.close()
-			connection.close()
+		cursor.close()
+		connection.close()
 
 @app.route("/api/attractions")
 def attractions():
