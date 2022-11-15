@@ -35,7 +35,26 @@ try:
             a = ("https" + j)
             if a[-4::] == ".JPG" or a[-4::] == ".jpg" or a[-4::] == ".png" or a[-4::] == ".PNG":
                 img_total += a + ","
+
         del i["file"]
+        del i["MEMO_TIME"]
+        del i["POI"]
+        del i["REF_WP"]
+        del i["RowNumber"]
+        del i["SERIAL_NO"]
+        del i["avBegin"]
+        del i["avEnd"]
+        del i["date"]
+        del i["idpt"]
+        del i["langinfo"]
+        del i["rate"]
+
+        i["id"] = i.pop("_id")
+        i["lat"] = i.pop("latitude")
+        i["lng"] = i.pop("longitude")
+        i["category"] = i.pop("CAT")
+        i["mrt"] = i.pop("MRT")
+        i["transport"] = i.pop("direction")
 
         other_info = json.dumps(i, ensure_ascii=False)
 
@@ -59,10 +78,8 @@ try:
             cat_id = 9
 
 
-        # cursor.execute(f"insert categories(categories) values('{category}')")
-        # 種類
-        sql = "insert other_info(img, other_info) values(%s, %s)"
-        cursor.execute(sql, (img_total, other_info.encode("utf8")))
+        sql = "insert descrition(attraction_id, img, other_info) values(%s, %s, %s)"
+        cursor.execute(sql, (id, img_total, other_info.encode("utf8")))
         sql2 = "insert attraction(name, cat_id) values(%s, %s)"
         cursor.execute(sql2, (name, cat_id))
         connection.commit()
