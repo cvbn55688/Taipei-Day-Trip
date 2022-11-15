@@ -39,12 +39,14 @@ def categories():
 		cursor = connection.cursor()
 		cursor.execute('select categories from categories;')
 		records = cursor.fetchall()
-		print(records)
-		data = {"data" : records}
-		return Response(str(data), status=200, mimetype='application/json')
+		data_list = []
+		for i in records:
+			data_list.append(i[0])
+		data = {"data" : data_list}
+		return data, 200
 	except Exception as e:
 		errorMes = {"error" : True, "message" : str(e)}
-		return Response(str(errorMes), status=500, mimetype='application/json')
+		return errorMes, 500
 	finally:
 		cursor.close()
 		connection.close()
@@ -65,16 +67,16 @@ def attractionID(attractionId):
 		records_info = (json.loads(records_info))
 		records_info.update(records_img)
 		data = {"data" : records_info}
-		return Response(str(data), status=200, mimetype='application/json')
+		return data, 200
 	except Exception as e:
 		try:
 			if records == None:
 				e = "景點編碼不正確"
 				errorMes = {"error" : True, "message" : str(e)}
-				return Response(str(errorMes), status=400, mimetype='application/json')
+				return errorMes, 400
 		except:
 			errorMes = {"error" : True, "message" : str(e)}
-			return Response(str(errorMes), status=500, mimetype='application/json')
+			return errorMes, 500
 	finally:
 		cursor.close()
 		connection.close()
@@ -108,14 +110,14 @@ def attractions():
 			data_list.append(record_info)
 			nextpage = page+1
 		data = {"nextPage" : nextpage , "data" : data_list}
-		return Response(str(data), status=200, mimetype='application/json')
+		return data, 200
 	except Exception as e:
 		if page == None or page.isdigit() == False:
 			errorMes = {"error" : True, "message" : "page is not corract"}
-			return Response(str(errorMes), status=500, mimetype='application/json')
+			return errorMes, 500
 		else:
 			errorMes = {"error" : True, "message" : str(e)}
-			return Response(str(errorMes), status=500, mimetype='application/json')
+			return errorMes, 500
 	finally:
 			cursor.close()
 			connection.close()
