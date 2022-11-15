@@ -41,10 +41,10 @@ def categories():
 		records = cursor.fetchall()
 		print(records)
 		data = {"data" : records}
-		return data
+		return Response(str(data), status=200, mimetype='application/json')
 	except Exception as e:
 		errorMes = {"error" : True, "message" : str(e)}
-		return errorMes
+		return Response(str(errorMes), status=500, mimetype='application/json')
 	finally:
 		cursor.close()
 		connection.close()
@@ -65,16 +65,16 @@ def attractionID(attractionId):
 		records_info = (json.loads(records_info))
 		records_info.update(records_img)
 		data = {"data" : records_info}
-		return data
+		return Response(str(data), status=200, mimetype='application/json')
 	except Exception as e:
 		try:
 			if records == None:
 				e = "景點編碼不正確"
 				errorMes = {"error" : True, "message" : str(e)}
-				return errorMes
+				return Response(str(errorMes), status=400, mimetype='application/json')
 		except:
 			errorMes = {"error" : True, "message" : str(e)}
-			return errorMes
+			return Response(str(errorMes), status=500, mimetype='application/json')
 	finally:
 		cursor.close()
 		connection.close()
@@ -108,15 +108,14 @@ def attractions():
 			data_list.append(record_info)
 			nextpage = page+1
 		data = {"nextPage" : nextpage , "data" : data_list}
-		return data
+		return Response(str(data), status=200, mimetype='application/json')
 	except Exception as e:
-		print((page))
 		if page == None or page.isdigit() == False:
 			errorMes = {"error" : True, "message" : "page is not corract"}
-			return errorMes
+			return Response(str(errorMes), status=500, mimetype='application/json')
 		else:
 			errorMes = {"error" : True, "message" : str(e)}
-			return errorMes
+			return Response(str(errorMes), status=500, mimetype='application/json')
 	finally:
 			cursor.close()
 			connection.close()
