@@ -90,27 +90,29 @@ def attractions():
 			keyword = ''
 		connection = connection_pool.get_connection()
 		cursor = connection.cursor()
-		sql = 'select descrition.img, descrition.other_info from attraction inner join categories on attraction.cat_id = categories.id inner join descrition on descrition.id = attraction.id where attraction.name like %s or categories.categories like %s order by attraction.id;'
-		cursor.execute(sql, ("%"+keyword+"%",keyword))
+		sql = 'select descrition.img, descrition.other_info from attraction inner join categories on attraction.cat_id = categories.id inner join descrition on descrition.id = attraction.id where attraction.name like %s or categories.categories like %s order by attraction.id limit %s,12;'
+		cursor.execute(sql, ("%"+keyword+"%", keyword, int(page)*12))
 		records = cursor.fetchall()
-		data_list = []
-		page = int(page)
-		for i in range(page*12, page*12+12):
-			if i >= len(records):
-				nextpage = None
-				break
-			record = records[i]
-			record_img = record[0]
-			record_img = record_img.split(",")
-			record_img.pop()
-			record_img = {"images" : record_img}
-			record_info = record[1]
-			record_info = (json.loads(record_info))
-			record_info.update(record_img)
-			data_list.append(record_info)
-			nextpage = page+1
-		data = {"nextPage" : nextpage , "data" : data_list}
-		return data, 200
+		if records != []:
+			data_list = []
+			for record in records:
+				record_img = record[0]
+				record_img = record_img.split(",")
+				record_img.pop()
+				record_img = {"images" : record_img}
+				record_info = record[1]
+				record_info = (json.loads(record_info))
+				record_info.update(record_img)
+				data_list.append(record_info)
+				if len(record) < 12:
+					nextpage = None
+				else:
+					nextpage = int(page)+1
+			data = {"nextPage" : nextpage , "data" : data_list}
+			return data, 200
+		else:
+			data = {"nextPage" : None , "data" : []}
+			return data, 200
 	except Exception as e:
 		if page == None or page.isdigit() == False:
 			errorMes = {"error" : True, "message" : "page is not corract"}
@@ -121,6 +123,5 @@ def attractions():
 	finally:
 			cursor.close()
 			connection.close()
-
 
 app.run(port=3000, debug = True)
