@@ -7,7 +7,7 @@ connection_pool = pooling.MySQLConnectionPool(
                                             host = 'localhost',
                                             port= "3306",
                                             user = 'root',
-                                            password = 'zxc55332',
+                                            password = 'password',
                                             database = 'website',
                                             pool_name="my_pool",
                                             pool_size = 5,
@@ -104,7 +104,7 @@ def attractions():
 				record_info = (json.loads(record_info))
 				record_info.update(record_img)
 				data_list.append(record_info)
-				if len(record) < 12:
+				if len(records) < 12:
 					nextpage = None
 				else:
 					nextpage = int(page)+1
