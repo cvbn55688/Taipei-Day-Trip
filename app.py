@@ -69,14 +69,13 @@ def attractionID(attractionId):
 		data = {"data" : records_info}
 		return data, 200
 	except Exception as e:
-		try:
 			if records == None:
 				e = "景點編碼不正確"
 				errorMes = {"error" : True, "message" : str(e)}
 				return errorMes, 400
-		except:
-			errorMes = {"error" : True, "message" : str(e)}
-			return errorMes, 500
+			else:
+				errorMes = {"error" : True, "message" : str(e)}
+				return errorMes, 500
 	finally:
 		cursor.close()
 		connection.close()
@@ -104,10 +103,10 @@ def attractions():
 				record_info = (json.loads(record_info))
 				record_info.update(record_img)
 				data_list.append(record_info)
-				if len(record) < 12:
-					nextpage = None
-				else:
-					nextpage = int(page)+1
+			if len(records) < 12:
+				nextpage = None
+			else:
+				nextpage = int(page)+1
 			data = {"nextPage" : nextpage , "data" : data_list}
 			return data, 200
 		else:
@@ -116,7 +115,7 @@ def attractions():
 	except Exception as e:
 		if page == None or page.isdigit() == False:
 			errorMes = {"error" : True, "message" : "page is not corract"}
-			return errorMes, 500
+			return errorMes, 400
 		else:
 			errorMes = {"error" : True, "message" : str(e)}
 			return errorMes, 500
