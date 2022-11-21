@@ -277,4 +277,11 @@ footer p {
   main .mid .card .details {
     height: 10%;
   }
+  main .top .slogan .category {
+    width: 322px;
+  }
+  main .top .slogan .category div {
+    width: 96px;
+    height: 40px;
+  }
 }/*# sourceMappingURL=style.css.map */
