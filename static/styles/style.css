@@ -244,13 +244,13 @@ footer p {
     height: 100%;
   }
   main .mid .card .attraction {
-    height: 90%;
+    height: 270px;
   }
   main .mid .card .attraction img {
     height: 100%;
   }
   main .mid .card .details {
-    height: 10%;
+    height: 45px;
   }
 }
 @media screen and (max-width: 600px) {
@@ -269,13 +269,13 @@ footer p {
     height: 100%;
   }
   main .mid .card .attraction {
-    height: 90%;
+    height: 235px;
   }
   main .mid .card .attraction img {
     height: 100%;
   }
   main .mid .card .details {
-    height: 10%;
+    height: 45px;
   }
   main .top .slogan .category {
     width: 322px;
