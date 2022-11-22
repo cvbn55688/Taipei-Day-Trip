@@ -94,6 +94,7 @@ def attractions():
 		sql = 'select descrition.img, descrition.other_info from attraction inner join categories on attraction.cat_id = categories.id inner join descrition on descrition.id = attraction.id where attraction.name like %s or categories.categories like %s order by attraction.id limit %s, 13;'
 		cursor.execute(sql, ("%"+keyword+"%", keyword, int(page)*12))
 		records = cursor.fetchall()
+    
 		if len(records) == 13:
 			nextpage = int(page)+1
 			records.pop()
