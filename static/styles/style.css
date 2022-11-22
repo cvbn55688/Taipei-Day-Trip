@@ -1,0 +1,287 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+header {
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+  background-color: #FFFFFF;
+  z-index: 999;
+  border: 1px solid rgba(231, 231, 231, 0.8196078431);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 54px;
+}
+header nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 1200px;
+}
+header nav p {
+  font-family: "Noto Sans TC";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 30px;
+  line-height: 34px;
+  color: #448899;
+}
+header nav ul {
+  display: flex;
+}
+header nav ul li {
+  list-style-type: none;
+  margin: 10px;
+  font-family: "Noto Sans TC";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 13px;
+  color: #666666;
+  cursor: pointer;
+}
+
+main {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+main .top {
+  display: flex;
+  justify-content: center;
+  background-image: url("../styles/img/welcome.png");
+  height: 320px;
+  width: 100%;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+main .top .slogan {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  width: 1200px;
+}
+main .top .slogan p {
+  color: #F8F8F8;
+  font-family: "Noto Sans TC";
+  font-style: normal;
+  font-weight: 700;
+}
+main .top .slogan .title {
+  font-size: 28px;
+  line-height: 24px;
+  padding: 10px;
+}
+main .top .slogan .subtitle {
+  font-size: 16px;
+  line-height: 13px;
+  padding: 10px;
+}
+main .top .slogan .search_bar {
+  display: flex;
+  height: 46px;
+  padding-left: 10px;
+  padding-top: 15px;
+}
+main .top .slogan .search_bar input {
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+  height: 46px;
+  width: 400px;
+  font-family: "Noto Sans TC";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 13px;
+  padding: 15px;
+  color: #757575;
+  border: none;
+}
+main .top .slogan .search_bar .img_box {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 60px;
+  height: 46px;
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+  background-color: #448899;
+  cursor: pointer;
+}
+main .top .slogan .search_bar .img_box img {
+  width: 30px;
+  height: 30px;
+}
+main .top .slogan .category {
+  position: absolute;
+  bottom: -95px;
+  background: #FFFFFF;
+  box-shadow: 0px 0px 20px #AABBCC;
+  border-radius: 5px;
+  z-index: 10;
+  width: 400px;
+  height: 162px;
+  margin: 10px;
+  display: None;
+  align-items: center;
+  gap: 4px;
+  grid-template-columns: repeat(3, 1fr);
+  padding: 4px;
+}
+main .top .slogan .category :hover {
+  background: #E8E8E8;
+  border-radius: 5px;
+}
+main .top .slogan .category div {
+  display: flex;
+  padding: 10px 15px;
+  width: 120px;
+  height: 40px;
+  cursor: pointer;
+  color: #000000;
+  font-family: "Noto Sans TC";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 20px;
+  align-items: center;
+}
+main .mid {
+  width: 1200px;
+  margin: 40px 0px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-gap: 15px;
+  padding: 15px;
+}
+main .mid .card {
+  width: 270px;
+  height: 242px;
+  border: 1px solid #E8E8E8;
+  border-radius: 5px;
+  cursor: pointer;
+}
+main .mid .card .attraction {
+  font-size: 0;
+  position: relative;
+}
+main .mid .card .attraction img {
+  width: 100%;
+  height: 197px;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+main .mid .card .attraction .attraction_name {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.6);
+  color: #FFFFFF;
+  position: absolute;
+  text-align: left;
+  bottom: 0;
+  height: 40px;
+  font-family: "Noto Sans TC";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 13px;
+  padding: 10px;
+}
+main .mid .card .details {
+  display: flex;
+  justify-content: space-between;
+  height: 45px;
+  padding: 10px;
+}
+main .mid .card .details p {
+  font-family: "Noto Sans TC";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 13px;
+  display: flex;
+  align-items: center;
+  color: #757575;
+}
+
+footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  height: 104px;
+  background: #757575;
+  width: 100%;
+}
+footer p {
+  font-family: "Noto Sans TC";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 13px;
+  color: #FFFFFF;
+}
+
+@media screen and (max-width: 1200px) {
+  header nav {
+    padding: 10px;
+  }
+  main .slogan {
+    padding: 10px;
+  }
+  main .mid {
+    width: 100%;
+    grid-template-columns: repeat(2, 1fr);
+  }
+  main .mid .card {
+    width: 100%;
+    height: 100%;
+  }
+  main .mid .card .attraction {
+    height: 90%;
+  }
+  main .mid .card .attraction img {
+    height: 100%;
+  }
+  main .mid .card .details {
+    height: 10%;
+  }
+}
+@media screen and (max-width: 600px) {
+  main .top .slogan {
+    padding: 10px;
+  }
+  main .top .slogan .search_bar input {
+    width: 230px;
+  }
+  main .mid {
+    width: 100%;
+    grid-template-columns: repeat(1, 1fr);
+  }
+  main .mid .card {
+    width: 100%;
+    height: 100%;
+  }
+  main .mid .card .attraction {
+    height: 90%;
+  }
+  main .mid .card .attraction img {
+    height: 100%;
+  }
+  main .mid .card .details {
+    height: 10%;
+  }
+  main .top .slogan .category {
+    width: 322px;
+  }
+  main .top .slogan .category div {
+    width: 96px;
+    height: 40px;
+  }
+}/*# sourceMappingURL=style.css.map */

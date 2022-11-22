@@ -7,14 +7,16 @@ connection_pool = pooling.MySQLConnectionPool(
                                             host = 'localhost',
                                             port= "3306",
                                             user = 'root',
-                                            password = 'password',
+                                            password = '',
                                             database = 'website',
                                             pool_name="my_pool",
                                             pool_size = 5,
                                             charset="utf8"
                                             )
 
-app=Flask(__name__)
+app=Flask(__name__,
+    static_folder="static",
+    static_url_path="/")
 app.config["JSON_AS_ASCII"]=False
 app.config["TEMPLATES_AUTO_RELOAD"]=True
 
@@ -69,14 +71,13 @@ def attractionID(attractionId):
 		data = {"data" : records_info}
 		return data, 200
 	except Exception as e:
-		try:
 			if records == None:
 				e = "景點編碼不正確"
 				errorMes = {"error" : True, "message" : str(e)}
 				return errorMes, 400
-		except:
-			errorMes = {"error" : True, "message" : str(e)}
-			return errorMes, 500
+			else:
+				errorMes = {"error" : True, "message" : str(e)}
+				return errorMes, 500
 	finally:
 		cursor.close()
 		connection.close()
@@ -90,33 +91,33 @@ def attractions():
 			keyword = ''
 		connection = connection_pool.get_connection()
 		cursor = connection.cursor()
-		sql = 'select descrition.img, descrition.other_info from attraction inner join categories on attraction.cat_id = categories.id inner join descrition on descrition.id = attraction.id where attraction.name like %s or categories.categories like %s order by attraction.id limit %s,12;'
+		sql = 'select descrition.img, descrition.other_info from attraction inner join categories on attraction.cat_id = categories.id inner join descrition on descrition.id = attraction.id where attraction.name like %s or categories.categories like %s order by attraction.id limit %s, 13;'
 		cursor.execute(sql, ("%"+keyword+"%", keyword, int(page)*12))
 		records = cursor.fetchall()
-		if records != []:
-			data_list = []
-			for record in records:
-				record_img = record[0]
-				record_img = record_img.split(",")
-				record_img.pop()
-				record_img = {"images" : record_img}
-				record_info = record[1]
-				record_info = (json.loads(record_info))
-				record_info.update(record_img)
-				data_list.append(record_info)
-				if len(records) < 12:
-					nextpage = None
-				else:
-					nextpage = int(page)+1
-			data = {"nextPage" : nextpage , "data" : data_list}
-			return data, 200
+    
+		if len(records) == 13:
+			nextpage = int(page)+1
+			records.pop()
 		else:
-			data = {"nextPage" : None , "data" : []}
-			return data, 200
+			nextpage = None
+		
+		data_list = []
+		for record in records:
+			record_img = record[0]
+			record_img = record_img.split(",")
+			record_img.pop()
+			record_img = {"images" : record_img}
+			record_info = record[1]
+			record_info = (json.loads(record_info))
+			record_info.update(record_img)
+			data_list.append(record_info)
+
+		data = {"nextPage" : nextpage , "data" : data_list}
+		return data, 200
 	except Exception as e:
-		if page == None or page.isdigit() == False:
-			errorMes = {"error" : True, "message" : "page is not corract"}
-			return errorMes, 500
+		if not page or page.isdigit() == False:
+			errorMes = {"error" : True, "message" : "page is not correct"}
+			return errorMes, 400
 		else:
 			errorMes = {"error" : True, "message" : str(e)}
 			return errorMes, 500
