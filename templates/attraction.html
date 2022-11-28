@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>台北一日遊</title>
+    <link rel="stylesheet" href="/styles/style.css">
+</head>
+<body>
+    <div class="full_screen">
+        <div class="member_login">
+            <div class="top_border"></div>
+            <img src="/styles/img/icon_close.png" alt="">
+            <p>登入會員帳號</p>
+            <form action="">
+                <input type="text" placeholder="輸入電子信箱" >
+                <input type="password" placeholder="輸入密碼" >
+                <button type="button">登入帳戶</button>
+                <p>還沒有帳戶？<span class="signup_button" href="">點此註冊</span></p>
+                <p style="color : red">會員功能尚未開通</p>
+            </form>
+        </div>
+
+        <div class="signup">
+            <div class="top_border"></div>
+            <img src="/styles/img/icon_close.png" alt="">
+            <p>註冊會員帳號</p>
+            <form action="">
+                <input type="text" placeholder="輸入姓名" >
+                <input type="text" placeholder="輸入電子信箱" >
+                <input type="password" placeholder="輸入密碼" >
+                <button type="button">登入帳戶</button>
+                <p>已經有帳戶？<span class="login_button" href="">點此登入</span></p>
+                <p style="color : red">會員功能尚未開通</p>
+            </form>
+        </div>
+    </div>
+    <header>
+        <nav>
+            <a href="/"><p>台北一日遊</p></a>
+            <ul>
+                <li><a href="/booking">預定行程</a></li>
+                <li class="login">登入/註冊</li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="first">
+            <div class="picture">
+                <div class="arrow">
+                    <img class="left_arrow" src="/styles/img/btn_leftArrow.png" alt="">
+                    <img class="right_arrow" src="/styles/img/btn_rightArrow.png" alt="">
+                </div>
+                <div class="imges"></div>
+                <div class="dot"></div>
+            </div>
+
+            <div class="profile">
+                <div class="arrtaction_title">
+                </div>
+                <form class="booking" action="submit">
+                    <p id="p_1">訂購導覽行程</p>
+                    <p id="p_2">以此景點為中心的一日行程，帶您探索城市角落故事</p>
+                    <div class="date">
+                        <span id="p_3">選擇日期：</span><input type="date">
+                    </div>
+                    <div class="time">
+                        <span id="p_4">選擇時間：</span>
+                        <label><input class="morning" type="radio" name="daytime" checked="true">上半天</label>
+                        <label><input class="afternoon" type="radio" name="daytime" checked="true">下半天</label>
+                    </div>
+                    <p id="p_5">導覽費用：<span id="p_6">新台幣2500元</span></p>
+                    
+                    <button onclick="alert('此功能尚未開通')" type="button">開始預約行程</button>
+                </form>
+            </div>
+        </section>
+
+        <hr>
+
+        <section class="info">
+            <div class="description">
+            </div>
+            <div class="address">
+                <p class="title">景點地址：</p>
+            </div>
+            <div class="transport">
+                <p class="title">交通方式：</p>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>COPYRIGHT@2021台北一日遊</p>
+    </footer>
+
+</body>
+<script src="/attraction.js"></script>
+</html>

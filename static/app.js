@@ -1,5 +1,5 @@
 const category_div = document.querySelector(".category");
-const seracg_input = document.querySelector(".search_bar input");
+const serach_input = document.querySelector(".search_bar input");
 const search_button = document.querySelector(".img_box");
 const target = document.querySelector("footer");
 const callback = (entries) => {
@@ -17,6 +17,7 @@ threshold: 0.9,
 
 let page = 0;
 let keyword = "";
+
 function add_attraction() {  
   let mid_div = document.querySelector(".mid");
   return fetch(
@@ -26,9 +27,10 @@ function add_attraction() {
     return response.json();
   })
   .then(function (data) {
-    page = data["nextPage"];
-    data = data["data"];
-    data.forEach(data => {
+
+    attractions_data = data["data"];
+    attractions_data.forEach(data => {
+
       let name = data["name"];
       let address = data["address"];
       let category = data["category"];
@@ -70,8 +72,20 @@ function add_attraction() {
       new_details.appendChild(new_mrt);
       new_details.appendChild(new_CAT);
     });
+    mid_div.addEventListener("click", function(eve){
+      if (eve.path.length == 8){
+        attraction_id = eve.path[1]["id"];
+      }else if (eve.path.length == 9){
+        attraction_id = eve.path[2]["id"];
+      }else{
+        return
+      }
+      document.location.href=`/attraction/${attraction_id}`
+    })
+    page = data["nextPage"];
     observer.observe(target);
-    let data_length = data.length;
+    let data_length = data["data"].length;
+
     return data_length;
   });
 };
@@ -113,13 +127,12 @@ function get_category(){
 };
 get_category();
 
-seracg_input.addEventListener("click", show_CAT);
+serach_input.addEventListener("click", show_CAT);
 let CAT_box = document.querySelector(".category");
 function show_CAT(){
   CAT_box.style.display = "grid";
-  let CAT_table = document.querySelector(".category");
-  CAT_table.addEventListener("mousedown", get_user_CAT);
-  seracg_input.addEventListener("blur", close_CAT);
+  CAT_box.addEventListener("mousedown", get_user_CAT);
+  serach_input.addEventListener("blur", close_CAT);
 };
 
 function get_user_CAT(eve){
@@ -132,3 +145,33 @@ function get_user_CAT(eve){
 function close_CAT(){
   CAT_box.style.display = "None";
 };
+
+let login = document.querySelector(".login")
+login.addEventListener("click", show_black_screen)
+let close_button = document.querySelector(".member_login img")
+close_button.addEventListener("click", close_black_screen)
+let login_page = document.querySelector(".full_screen")
+let login_div = document.querySelector(".member_login")
+let sign_div = document.querySelector(".signup")
+function show_black_screen(){
+  
+  login_page.style.display = "flex"
+}
+function close_black_screen(){
+  login_page.style.display = "None"
+}
+
+let signup_button = document.querySelector(".signup_button");
+signup_button.addEventListener("click", show_signup)
+function show_signup(){
+  login_div.style.display = "None"
+  sign_div.style.display = "flex"
+}
+
+let login_button = document.querySelector(".login_button");
+login_button.addEventListener("click", show_login)
+function show_login(){
+  login_div.style.display = "flex"
+  sign_div.style.display = "None"
+}
+
