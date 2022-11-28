@@ -14,7 +14,6 @@ a{
 body{
   overflow-x: hidden;
 }
-
 .full_screen{
   display: None;
   justify-content: center;
@@ -23,7 +22,7 @@ body{
   position:fixed;
   z-index: 99999;
   background-color: rgba($color: #000000, $alpha: 0.25);
-  .member_login, .signup{
+  .member_system{
     position: absolute;
     top: 80px;
     width: 340px;
@@ -34,19 +33,21 @@ body{
     flex-direction: column;
     // justify-content: center;
     align-items: center;
-    img{
-      position: absolute;
-      right: 0;
-      margin: 20px;
-      cursor: pointer;
-    }
-    .top_border{
-      width: 100%;
-      height: 10px;
-      border-top-left-radius: 5px;
-      border-top-right-radius: 5px;
-      background: linear-gradient(270deg, #337788 0%, #66AABB 100%);
-    }
+  }
+  .close_img{
+    position: absolute;
+    right: 0;
+    margin: 20px;
+    cursor: pointer;
+  }
+  .top_border{
+    width: 100%;
+    height: 10px;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    background: linear-gradient(270deg, #337788 0%, #66AABB 100%);
+  }
+  .member_login, .signup{
     p{
       font-weight: 700;
       font-size: 24px;
@@ -98,7 +99,6 @@ body{
   }
   .signup{
     display: None;
-    height: 340px;
   }
 }
 
@@ -106,7 +106,7 @@ header{
   position: sticky;
   top: 0;
   background-color: #FFFFFF;
-  z-index: 999;
+  z-index: 99999;
   border: 1px solid #e7e7e7d1;
   display: flex;
   justify-content: center;
