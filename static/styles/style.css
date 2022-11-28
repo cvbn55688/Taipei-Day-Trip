@@ -1,0 +1,744 @@
+@import url(//fonts.googleapis.com/earlyaccess/notosanstc.css);
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Noto Sans TC";
+  font-style: normal;
+}
+
+a {
+  text-decoration: none;
+}
+
+body {
+  overflow-x: hidden;
+}
+
+.full_screen {
+  display: None;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  z-index: 99999;
+  background-color: rgba(0, 0, 0, 0.25);
+}
+.full_screen .member_login, .full_screen .signup {
+  position: absolute;
+  top: 80px;
+  width: 340px;
+  height: 285px;
+  border-radius: 6px;
+  background-color: #ffffff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.full_screen .member_login img, .full_screen .signup img {
+  position: absolute;
+  right: 0;
+  margin: 20px;
+  cursor: pointer;
+}
+.full_screen .member_login .top_border, .full_screen .signup .top_border {
+  width: 100%;
+  height: 10px;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  background: linear-gradient(270deg, #337788 0%, #66AABB 100%);
+}
+.full_screen .member_login p, .full_screen .signup p {
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 24px;
+  color: #666666;
+  padding: 10px;
+}
+.full_screen .member_login form, .full_screen .signup form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 5px;
+}
+.full_screen .member_login form input, .full_screen .signup form input {
+  margin-bottom: 10px;
+  width: 310px;
+  height: 47px;
+  background: #FFFFFF;
+  border: 1px solid #CCCCCC;
+  border-radius: 5px;
+  padding: 15px;
+}
+.full_screen .member_login form button, .full_screen .signup form button {
+  width: 154px;
+  height: 36px;
+  background: #448899;
+  border-radius: 5px;
+  border: None;
+  font-weight: 400;
+  font-size: 19px;
+  line-height: 16px;
+  color: #FFFFFF;
+  margin-bottom: 10px;
+  cursor: pointer;
+}
+.full_screen .member_login form p, .full_screen .signup form p {
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 13px;
+}
+.full_screen .member_login form p span, .full_screen .signup form p span {
+  color: #666666;
+  cursor: pointer;
+}
+.full_screen .member_login form p :hover, .full_screen .signup form p :hover {
+  color: #002aff;
+}
+.full_screen .signup {
+  display: None;
+  height: 340px;
+}
+
+header {
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+  background-color: #FFFFFF;
+  z-index: 999;
+  border: 1px solid rgba(231, 231, 231, 0.8196078431);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 54px;
+}
+header nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 1200px;
+}
+header nav p {
+  font-weight: 700;
+  font-size: 30px;
+  line-height: 34px;
+  color: #448899;
+}
+header nav ul {
+  display: flex;
+}
+header nav ul li {
+  list-style-type: none;
+  margin: 10px;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 13px;
+  color: #666666;
+  cursor: pointer;
+}
+header nav ul li a {
+  color: #666666;
+}
+
+main {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+main .top {
+  display: flex;
+  justify-content: center;
+  background-image: url("../styles/img/welcome.png");
+  height: 320px;
+  width: 100%;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+main .top .slogan {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  width: 1200px;
+}
+main .top .slogan p {
+  color: #F8F8F8;
+}
+main .top .slogan .title {
+  font-size: 28px;
+  line-height: 24px;
+  font-weight: 700;
+  padding: 10px;
+}
+main .top .slogan .subtitle {
+  font-size: 16px;
+  line-height: 13px;
+  font-weight: 500;
+  padding: 10px;
+}
+main .top .slogan .search_bar {
+  display: flex;
+  height: 46px;
+  padding-left: 10px;
+  padding-top: 15px;
+}
+main .top .slogan .search_bar input {
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+  height: 46px;
+  width: 400px;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 13px;
+  padding: 15px;
+  color: #757575;
+  border: none;
+}
+main .top .slogan .search_bar .img_box {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 60px;
+  height: 46px;
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+  background-color: #448899;
+  cursor: pointer;
+}
+main .top .slogan .search_bar .img_box img {
+  width: 30px;
+  height: 30px;
+}
+main .top .slogan .category {
+  position: absolute;
+  bottom: -95px;
+  background: #FFFFFF;
+  box-shadow: 0px 0px 20px #AABBCC;
+  border-radius: 5px;
+  z-index: 10;
+  width: 400px;
+  height: 162px;
+  margin: 10px;
+  display: None;
+  align-items: center;
+  gap: 4px;
+  grid-template-columns: repeat(3, 1fr);
+  padding: 4px;
+}
+main .top .slogan .category :hover {
+  background: #E8E8E8;
+  border-radius: 5px;
+}
+main .top .slogan .category div {
+  display: flex;
+  padding: 10px 15px;
+  width: 120px;
+  height: 40px;
+  cursor: pointer;
+  color: #000000;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 20px;
+  align-items: center;
+}
+main .mid {
+  width: 1200px;
+  margin: 40px 0px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-gap: 15px;
+  padding: 15px;
+}
+main .mid .card {
+  position: relative;
+  width: 270px;
+  height: 242px;
+  border: 1px solid #E8E8E8;
+  border-radius: 5px;
+  cursor: pointer;
+}
+main .mid .card .attraction {
+  font-size: 0;
+  position: relative;
+}
+main .mid .card .attraction img {
+  width: 100%;
+  height: 197px;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+main .mid .card .attraction .attraction_name {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.6);
+  color: #FFFFFF;
+  position: absolute;
+  text-align: left;
+  bottom: 0;
+  height: 40px;
+  font-family: "Noto Sans TC";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 18px;
+  padding: 10px;
+}
+main .mid .card .details {
+  display: flex;
+  justify-content: space-between;
+  height: 45px;
+  padding: 10px;
+}
+main .mid .card .details p {
+  font-family: "Noto Sans TC";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 13px;
+  display: flex;
+  align-items: center;
+  color: #757575;
+}
+main .first {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 30px;
+  width: 1200px;
+  padding: 40px 15px 0 15px;
+}
+main .first .picture {
+  position: relative;
+  width: 540px;
+  height: 400px;
+  border-radius: 5px;
+}
+main .first .picture .dot {
+  width: 100%;
+  height: 30px;
+  position: absolute;
+  z-index: 50;
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+main .first .picture .dot .dot_child {
+  position: relative;
+  z-index: 50;
+  width: 12px;
+  height: 12px;
+  margin: 2px;
+  border-radius: 50%;
+  background-color: #ffffff;
+  border: 2px solid #FFFFFF;
+}
+@-webkit-keyframes appear_dot {
+  0% {
+    opacity: 0.5;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+@keyframes appear_dot {
+  0% {
+    opacity: 0.5;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+@-webkit-keyframes disappear_dot {
+  0% {
+    opacity: 0.5;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+@keyframes disappear_dot {
+  0% {
+    opacity: 0.5;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+main .first .picture .imges {
+  width: 100%;
+  height: 100%;
+}
+main .first .picture .imges img {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+main .first .picture .imges img:not(:first-child) {
+  opacity: 0;
+}
+@-webkit-keyframes showRight {
+  0% {
+    left: 5%;
+    opacity: 0;
+  }
+  100% {
+    left: 0;
+    opacity: 1;
+  }
+}
+@keyframes showRight {
+  0% {
+    left: 5%;
+    opacity: 0;
+  }
+  100% {
+    left: 0;
+    opacity: 1;
+  }
+}
+@-webkit-keyframes hideRight {
+  0% {
+    left: 0;
+    opacity: 1;
+  }
+  100% {
+    left: -5%;
+    opacity: 0;
+  }
+}
+@keyframes hideRight {
+  0% {
+    left: 0;
+    opacity: 1;
+  }
+  100% {
+    left: -5%;
+    opacity: 0;
+  }
+}
+@-webkit-keyframes showLeft {
+  0% {
+    left: -5%;
+    opacity: 0;
+  }
+  100% {
+    left: 0;
+    opacity: 1;
+  }
+}
+@keyframes showLeft {
+  0% {
+    left: -5%;
+    opacity: 0;
+  }
+  100% {
+    left: 0;
+    opacity: 1;
+  }
+}
+@-webkit-keyframes hideLeft {
+  0% {
+    left: 0;
+    opacity: 1;
+  }
+  100% {
+    left: 5%;
+    opacity: 0;
+  }
+}
+@keyframes hideLeft {
+  0% {
+    left: 0;
+    opacity: 1;
+  }
+  100% {
+    left: 5%;
+    opacity: 0;
+  }
+}
+main .first .picture .arrow {
+  position: absolute;
+  z-index: 50;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 10px;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+}
+main .first .picture .arrow img {
+  position: relative;
+  width: 36px;
+  height: 36px;
+  opacity: 0.75;
+  cursor: pointer;
+}
+main .first .profile {
+  width: 600px;
+}
+main .first .profile .profile_title {
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 24px;
+  height: 33px;
+  display: flex;
+  align-items: center;
+  color: #666666;
+}
+main .first .profile .profile_subtitle {
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 13px;
+  height: 22px;
+  display: flex;
+  align-items: center;
+  color: #666666;
+  margin: 15px 0 20px 0;
+}
+main .first .profile .booking {
+  width: 100%;
+  padding: 15px 0 0 0;
+  background: #E8E8E8;
+  border-radius: 5px;
+}
+main .first .profile .booking #p_1 {
+  margin: 0 20px 0 20px;
+  font-weight: 700;
+  font-size: 16px;
+  height: 22px;
+  line-height: 13px;
+  color: #666666;
+}
+main .first .profile .booking #p_2 {
+  margin: 15px 20px 0 20px;
+  font-weight: 500;
+  font-size: 16px;
+  height: 24px;
+  line-height: 13px;
+  color: #666666;
+}
+main .first .profile .booking .date, main .first .profile .booking .time {
+  margin: 15px 20px 0 20px;
+}
+main .first .profile .booking .date #p_3, main .first .profile .booking .date span, main .first .profile .booking .time #p_3, main .first .profile .booking .time span {
+  font-weight: 700;
+  font-size: 16px;
+  height: 17px;
+  line-height: 13px;
+  color: #666666;
+}
+main .first .profile .booking .date input, main .first .profile .booking .time input {
+  width: 193px;
+  height: 35px;
+  background: #FFFFFF;
+  font-weight: 500;
+  font-size: 16px;
+  color: #000000;
+  padding: 5px 10px;
+}
+main .first .profile .booking .time {
+  display: flex;
+  align-items: center;
+}
+main .first .profile .booking .time label {
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 13px;
+  color: #666666;
+  margin-right: 5px;
+  display: flex;
+  align-items: center;
+}
+main .first .profile .booking .time label input[type=radio] {
+  -webkit-appearance: none;
+  padding: 0;
+  margin: 0 6px;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+}
+main .first .profile .booking .time label input[type=radio]:before {
+  content: "";
+  display: block;
+  width: 80%;
+  height: 80%;
+  margin: 10%;
+  border-radius: 50%;
+}
+main .first .profile .booking .time label input[type=radio]:checked:before {
+  background: #448899;
+}
+main .first .profile .booking #p_5 {
+  margin: 15px 20px 0 20px;
+  font-weight: 700;
+  font-size: 16px;
+  height: 22px;
+  line-height: 13px;
+  color: #666666;
+}
+main .first .profile .booking #p_6 {
+  font-weight: 500;
+}
+main .first .profile .booking button {
+  width: 154px;
+  height: 36px;
+  background: #448899;
+  border-radius: 5px;
+  border: None;
+  font-weight: 400;
+  font-size: 19px;
+  line-height: 16px;
+  color: #FFFFFF;
+  margin: 25px 20px 40px 20px;
+  cursor: pointer;
+}
+main .first .profile .booking button:hover {
+  background: #096379;
+}
+main hr {
+  width: 1200px;
+  border: none;
+  border-top: 2px solid #E8E8E8;
+  padding: 0px;
+  margin: 40px 0;
+}
+main .info {
+  margin: 0 0 80px 0;
+  padding: 10px;
+  width: 1200px;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 23px;
+  color: #666666;
+}
+main .info .description {
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 22px;
+}
+main .info .title {
+  display: flex;
+  align-items: center;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 13px;
+  height: 32px;
+}
+main .info .address {
+  margin: 20px 0;
+}
+
+footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  height: 104px;
+  background: #757575;
+  width: 100%;
+}
+footer p {
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 13px;
+  color: #FFFFFF;
+}
+
+@media screen and (max-width: 1200px) {
+  header nav {
+    padding: 10px;
+  }
+  main .slogan {
+    padding: 10px;
+  }
+  main .mid {
+    width: 100%;
+    grid-template-columns: repeat(2, 1fr);
+  }
+  main .mid .card {
+    width: 100%;
+    height: 100%;
+  }
+  main .mid .card .attraction {
+    height: 235px;
+  }
+  main .mid .card .attraction img {
+    height: 100%;
+  }
+  main .mid .card .details {
+    height: 45px;
+  }
+  main .first {
+    display: block;
+    width: 100%;
+    padding: 10px;
+  }
+  main .first .picture {
+    width: 100%;
+  }
+  main .first .profile {
+    width: 100%;
+  }
+  main hr {
+    width: 95%;
+  }
+  main .info {
+    width: 100%;
+    padding: 0 20px;
+  }
+}
+@media screen and (max-width: 600px) {
+  main .top .slogan {
+    padding: 10px;
+  }
+  main .top .slogan .search_bar input {
+    width: 230px;
+  }
+  main .mid {
+    width: 100%;
+    grid-template-columns: repeat(1, 1fr);
+  }
+  main .mid .card {
+    width: 100%;
+    height: 100%;
+  }
+  main .mid .card .attraction {
+    height: 235px;
+  }
+  main .mid .card .attraction img {
+    height: 100%;
+  }
+  main .mid .card .details {
+    height: 45px;
+  }
+  main .top .slogan .category {
+    width: 322px;
+  }
+  main .top .slogan .category div {
+    width: 96px;
+    height: 40px;
+  }
+  main .first {
+    padding: 0;
+    margin: 0;
+  }
+  main .first .profile {
+    padding: 0 10px;
+  }
+  main .first .profile .profile_title {
+    height: 40px;
+  }
+  main .first .profile .booking #p_2 {
+    height: 28px;
+    line-height: 17px;
+  }
+}/*# sourceMappingURL=style.css.map */
