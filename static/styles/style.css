@@ -1,8 +1,10 @@
 @import url(//fonts.googleapis.com/earlyaccess/notosanstc.css);
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+
   font-family: "Noto Sans TC";
   font-style: normal;
 }
@@ -100,6 +102,7 @@ body {
 .full_screen .signup {
   display: None;
   height: 340px;
+
 }
 
 header {
@@ -169,13 +172,17 @@ main .top .slogan p {
 main .top .slogan .title {
   font-size: 28px;
   line-height: 24px;
+
   font-weight: 700;
+
   padding: 10px;
 }
 main .top .slogan .subtitle {
   font-size: 16px;
   line-height: 13px;
+
   font-weight: 500;
+
   padding: 10px;
 }
 main .top .slogan .search_bar {
@@ -189,6 +196,7 @@ main .top .slogan .search_bar input {
   border-bottom-left-radius: 5px;
   height: 46px;
   width: 400px;
+
   font-weight: 700;
   font-size: 16px;
   line-height: 13px;
@@ -253,6 +261,7 @@ main .mid {
 }
 main .mid .card {
   position: relative;
+
   width: 270px;
   height: 242px;
   border: 1px solid #E8E8E8;
@@ -284,6 +293,7 @@ main .mid .card .attraction .attraction_name {
   font-weight: 700;
   font-size: 16px;
   line-height: 18px;
+
   padding: 10px;
 }
 main .mid .card .details {
@@ -637,6 +647,7 @@ main .info .address {
   margin: 20px 0;
 }
 
+
 footer {
   display: flex;
   justify-content: center;
@@ -695,6 +706,7 @@ footer p {
     width: 100%;
     padding: 0 20px;
   }
+
 }
 @media screen and (max-width: 600px) {
   main .top .slogan {
@@ -741,4 +753,5 @@ footer p {
     height: 28px;
     line-height: 17px;
   }
+
 }/*# sourceMappingURL=style.css.map */
