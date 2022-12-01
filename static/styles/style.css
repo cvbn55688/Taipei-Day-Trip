@@ -28,7 +28,6 @@ body {
   position: absolute;
   top: 80px;
   width: 340px;
-  height: 285px;
   border-radius: 6px;
   background-color: #ffffff;
   display: flex;
@@ -48,6 +47,12 @@ body {
   border-top-right-radius: 5px;
   background: linear-gradient(270deg, #337788 0%, #66AABB 100%);
 }
+.full_screen .member_login, .full_screen .signup {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
 .full_screen .member_login p, .full_screen .signup p {
   font-weight: 700;
   font-size: 24px;
@@ -61,7 +66,7 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin: 5px;
+  margin: 5px 0;
 }
 .full_screen .member_login form input, .full_screen .signup form input {
   margin-bottom: 10px;

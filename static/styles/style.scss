@@ -26,7 +26,7 @@ body{
     position: absolute;
     top: 80px;
     width: 340px;
-    height: 285px;
+    // height: 295px;
     border-radius: 6px;
     background-color: #ffffff;
     display: flex;
@@ -48,6 +48,10 @@ body{
     background: linear-gradient(270deg, #337788 0%, #66AABB 100%);
   }
   .member_login, .signup{
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
     p{
       font-weight: 700;
       font-size: 24px;
@@ -61,7 +65,7 @@ body{
       flex-direction: column;
       justify-content: center;
       align-items: center;
-      margin: 5px;
+      margin: 5px 0;
       input{
         margin-bottom: 10px;
         width: 310px;
