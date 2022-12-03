@@ -1,11 +1,9 @@
 from flask import *
 from mysql.connector import pooling
-from mysql.connector import Error
 from flask_jwt_extended import JWTManager
 from flask_jwt_extended import create_access_token
 from flask_jwt_extended import get_jwt_identity
 from flask_jwt_extended import decode_token
-from datetime import datetime
 
 import jwt
 jwt = JWTManager()
@@ -18,7 +16,7 @@ connection_pool = pooling.MySQLConnectionPool(
                                             host = 'localhost',
                                             port= "3306",
                                             user = 'root',
-                                            password = 'zxc55332',
+                                            password = '',
                                             database = 'website',
                                             pool_name="my_pool",
                                             pool_size = 5,

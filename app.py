@@ -1,7 +1,5 @@
 from flask import *
-import mysql.connector
 from mysql.connector import pooling
-from mysql.connector import Error
 from attraction_system import attraction_system
 from member_system import member_system
 from flask_jwt_extended import JWTManager

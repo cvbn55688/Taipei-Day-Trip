@@ -1,6 +1,5 @@
 from flask import *
 from mysql.connector import pooling
-from mysql.connector import Error
 
 attraction_system = Blueprint("attraction_system", __name__, static_folder="static", template_folder="templates")
 
@@ -8,7 +7,7 @@ connection_pool = pooling.MySQLConnectionPool(
                                             host = 'localhost',
                                             port= "3306",
                                             user = 'root',
-                                            password = 'zxc55332',
+                                            password = '',
                                             database = 'website',
                                             pool_name="my_pool",
                                             pool_size = 5,

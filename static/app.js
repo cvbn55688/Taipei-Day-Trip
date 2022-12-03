@@ -70,24 +70,6 @@ function add_attraction() {
       new_details.appendChild(new_mrt);
       new_details.appendChild(new_CAT);
     });
-    // mid_div.addEventListener("click", function(eve){
-    //   console.log(eve.path)
-    //   if (eve.path.length == 8){
-    //     attraction_id = eve.path[1]["id"];
-    //   }else if (eve.path.length == 9){
-    //     attraction_id = eve.path[2]["id"];
-    //   }else{
-    //     return
-    //   }
-      // document.location.href=`/attraction/${attraction_id}`
-    // })
-    // let card_div = document.querySelectorAll(".card");
-    // for (let i = (page*12); i < card_div.length; i++) {
-    //   card_div[i].addEventListener("click", function(){
-    //     attraction_id = card_div[i]["id"];
-    //     document.location.href=`/attraction/${attraction_id}`
-    //   });
-    // }
     page = data["nextPage"];
     observer.observe(target);
     let data_length = data["data"].length;
