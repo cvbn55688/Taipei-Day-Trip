@@ -14,6 +14,7 @@ const callback = (entries) => {
 const observer = new IntersectionObserver(callback, {
 threshold: 0.9,
 });
+
 let page = 0;
 let keyword = "";
 
@@ -26,8 +27,10 @@ function add_attraction() {
     return response.json();
   })
   .then(function (data) {
+
     attractions_data = data["data"];
     attractions_data.forEach(data => {
+
       let name = data["name"];
       let address = data["address"];
       let category = data["category"];
@@ -73,6 +76,7 @@ function add_attraction() {
     page = data["nextPage"];
     observer.observe(target);
     let data_length = data["data"].length;
+
     return data_length;
   });
 };
