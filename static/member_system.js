@@ -9,15 +9,20 @@ const login_submit = document.querySelector(".member_login button");
 const signup_submit = document.querySelector(".signup button");
 const signup_button = document.querySelector(".signup_button");
 const login_button = document.querySelector(".login_button");
+const email_regex = /^([a-zA-Z0-9_\.\-\+])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
 
 member_button.addEventListener("click", show_black_screen);
 function show_black_screen(){
+  login_page.style.display = "flex"
   login_page.style.animation = "show_member_system 0.5s forwards"
 };
 
 close_button.addEventListener("click", close_black_screen);
 function close_black_screen(){
   login_page.style.animation = "close_member_system 0.5s forwards"
+  setTimeout(() => {
+    login_page.style.display = "None"
+  }, 500);
 };
 
 signup_button.addEventListener("click", show_signup);
@@ -52,7 +57,11 @@ function singup(){
         sing_message.style.color = "red";
         user_data_form.appendChild(sing_message);
         erase_message(user_data_form)
-        
+    }else if(!email_regex.test(user_email)){
+        sing_message.textContent = "信箱不符合格式";
+        sing_message.style.color = "red";
+        user_data_form.appendChild(sing_message);
+        erase_message(user_data_form)
     }else{
         fetch(
             `/api/user`, {
@@ -95,6 +104,11 @@ function login(){
     let user_password = user_data_form[1].value;
     if (user_email == "" || user_password == ""){
         sing_message.textContent = "信箱、密碼皆不可空白";
+        sing_message.style.color = "red";
+        user_data_form.appendChild(sing_message);
+        erase_message(user_data_form)
+    }else if(!email_regex.test(user_email)){
+        sing_message.textContent = "信箱不符合格式";
         sing_message.style.color = "red";
         user_data_form.appendChild(sing_message);
         erase_message(user_data_form)

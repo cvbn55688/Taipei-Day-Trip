@@ -49,7 +49,7 @@ body {
   }
 }
 .full_screen {
-  display: flex;
+  display: None;
   opacity: 0;
   justify-content: center;
   width: 100%;
