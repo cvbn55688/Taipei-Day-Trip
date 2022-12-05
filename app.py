@@ -2,8 +2,6 @@ from flask import *
 from mysql.connector import pooling
 from attraction_system import attraction_system
 from member_system import member_system
-from flask_jwt_extended import JWTManager
-jwt = JWTManager()
 
 connection_pool = pooling.MySQLConnectionPool(
                                             host = 'localhost',
@@ -23,8 +21,6 @@ app=Flask(__name__,
 app.secret_key="test"
 app.config["JSON_AS_ASCII"]=False
 app.config["TEMPLATES_AUTO_RELOAD"]=True
-app.config['JWT_SECRET_KEY'] = 'test'
-jwt.init_app(app)
 app.register_blueprint(attraction_system, url_prefix="")
 app.register_blueprint(member_system, url_prefix="")
 

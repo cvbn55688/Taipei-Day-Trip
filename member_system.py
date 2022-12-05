@@ -1,12 +1,9 @@
 from flask import *
 from mysql.connector import pooling
-from flask_jwt_extended import JWTManager
 from flask_jwt_extended import create_access_token
 from flask_jwt_extended import get_jwt_identity
 from flask_jwt_extended import decode_token
-
 import jwt
-jwt = JWTManager()
 
 
 
@@ -27,7 +24,7 @@ connection_pool = pooling.MySQLConnectionPool(
 
 @member_system.route("/api/user", methods=["POST"])
 def sign():
-    request_newuser = request.get_json()
+    request_newuser = request.get_json() 
     name = request_newuser["name"]
     email = request_newuser["email"]
     password = request_newuser["password"]
@@ -56,9 +53,9 @@ def sign():
 @member_system.route("/api/user/auth", methods=["GET", "PUT", "DELETE"])
 def login():
     if request.method == "PUT":
-        request_newname = request.get_json()
-        email = request_newname["email"]
-        password = request_newname["password"]
+        request_userdata = request.get_json()
+        email = request_userdata["email"]
+        password = request_userdata["password"]
 
         try:
             connection = connection_pool.get_connection()
@@ -69,14 +66,13 @@ def login():
 
             if records != None:
                 user_data = {"user_id": records[0], "user_name": records[1], "user_email": records[2]}
-                access_token = create_access_token(identity=user_data)
-                print(decode_token(access_token))
+                encoded_jwt = jwt.encode(user_data, "secret", algorithm="HS256")
                 res = make_response({"ok": True}, 200)
-                res.set_cookie("Set-Cookie", value=access_token, max_age=60*60*24*14)
+                res.set_cookie("Set-Cookie", value=encoded_jwt, max_age=60*60*24*7)
                 return res
 
             else:
-                return {"error": True, "message": "帳號或密碼錯誤"}, 400
+                return {"error": True, "message": "信箱或密碼錯誤"}, 400
         
         except Exception as e:
             return {"error": True, "message": e}, 500
@@ -88,7 +84,7 @@ def login():
     if request.method == "GET":
         user_data = request.cookies.get('Set-Cookie')
         if user_data != None:
-            user_data = decode_token(user_data)["sub"]
+            user_data = jwt.decode(user_data, "secret", algorithms=["HS256"])
             user_id = user_data["user_id"]
             user_name = user_data["user_name"]
             user_email = user_data["user_email"]
@@ -99,6 +95,5 @@ def login():
     if request.method == "DELETE":
         res = make_response({"ok": True}, 200)
         res.set_cookie('Set-Cookie', value='', expires=0)
-        print("delete")
         return res
         

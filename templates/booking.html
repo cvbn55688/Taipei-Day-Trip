@@ -9,29 +9,41 @@
 </head>
 <body>
     <div class="full_screen">
-        <div class="member_login">
+        <div class="member_system">
             <div class="top_border"></div>
-            <img src="/styles/img/icon_close.png" alt="">
-            <p>登入會員帳號</p>
-            <form action="">
-                <input type="text" placeholder="輸入電子信箱" >
-                <input type="password" placeholder="輸入密碼" >
-                <button type="button">登入帳戶</button>
-                <p>還沒有帳戶？<a href="">點此註冊</a></p>
-                <p style="color : red">會員功能尚未開通</p>
-            </form>
+            <img class="close_img" src="/styles/img/icon_close.png" alt="">
+            <div class="member_login">
+                <p>登入會員帳號</p>
+                <form action="">
+                    <input type="text" placeholder="輸入電子信箱" >
+                    <input type="password" placeholder="輸入密碼" >
+                    <button type="button">登入帳戶</button>
+                    <p>還沒有帳戶？<span class="signup_button" href="">點此註冊</span></p>
+                </form>
+            </div>
+            <div class="signup">
+                <p>註冊會員帳號</p>
+                <form action="", method="POST">
+                    <input type="text" name="name" placeholder="輸入姓名" >
+                    <input type="text" name="email" placeholder="輸入電子信箱" >
+                    <input type="password" name="password" placeholder="輸入密碼" >
+                    <button type="reset">註冊帳戶</button>
+                    <p>已經有帳戶？<span class="login_button" href="">點此登入</span></p>
+                </form>
+            </div>
         </div>
     </div>
     <header>
         <nav>
             <a href="/"><p>台北一日遊</p></a>
             <ul>
-                <li>預定行程</li>
-                <li class="login">登入/註冊</li>
+                <li><a href="/booking">預定行程</a></li>
+                <li class="member">登入/註冊</li>
             </ul>
         </nav>
     </header>
     <h1 style="color : red">此功能尚未開通</h1>
     <a href="/" style="text-decoration: underline ;"><h2>返回首頁</ㄕ></a>
 </body>
+<script src="/member_system.js"></script>
 </html>
