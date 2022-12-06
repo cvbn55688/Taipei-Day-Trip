@@ -39,9 +39,10 @@ function add_attraction() {
       let id = data["id"];
       let images = data["images"];
 
-      let new_card = document.createElement("div");
+      let new_card = document.createElement("a");
       new_card.classList.add("card");
       new_card.setAttribute("id", id);
+      new_card.href = `/attraction/${id}`
 
       let new_attraction = document.createElement("div");
       new_attraction.classList.add("attraction");
@@ -72,16 +73,6 @@ function add_attraction() {
       new_details.appendChild(new_mrt);
       new_details.appendChild(new_CAT);
     });
-    mid_div.addEventListener("click", function(eve){
-      if (eve.path.length == 8){
-        attraction_id = eve.path[1]["id"];
-      }else if (eve.path.length == 9){
-        attraction_id = eve.path[2]["id"];
-      }else{
-        return
-      }
-      document.location.href=`/attraction/${attraction_id}`
-    })
     page = data["nextPage"];
     observer.observe(target);
     let data_length = data["data"].length;
@@ -145,33 +136,4 @@ function get_user_CAT(eve){
 function close_CAT(){
   CAT_box.style.display = "None";
 };
-
-let login = document.querySelector(".login")
-login.addEventListener("click", show_black_screen)
-let close_button = document.querySelector(".member_login img")
-close_button.addEventListener("click", close_black_screen)
-let login_page = document.querySelector(".full_screen")
-let login_div = document.querySelector(".member_login")
-let sign_div = document.querySelector(".signup")
-function show_black_screen(){
-  
-  login_page.style.display = "flex"
-}
-function close_black_screen(){
-  login_page.style.display = "None"
-}
-
-let signup_button = document.querySelector(".signup_button");
-signup_button.addEventListener("click", show_signup)
-function show_signup(){
-  login_div.style.display = "None"
-  sign_div.style.display = "flex"
-}
-
-let login_button = document.querySelector(".login_button");
-login_button.addEventListener("click", show_login)
-function show_login(){
-  login_div.style.display = "flex"
-  sign_div.style.display = "None"
-}
 

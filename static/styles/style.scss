@@ -13,39 +13,59 @@ a{
 body{
   overflow-x: hidden;
 }
-
+@keyframes show_member_system {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+@keyframes close_member_system {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
 .full_screen{
   display: None;
+  opacity: 0;
   justify-content: center;
   width: 100%;
   height: 100%;
   position:fixed;
   z-index: 99999;
   background-color: rgba($color: #000000, $alpha: 0.25);
-  .member_login, .signup{
+  .member_system{
     position: absolute;
     top: 80px;
     width: 340px;
-    height: 285px;
     border-radius: 6px;
     background-color: #ffffff;
     display: flex;
     flex-direction: column;
-    // justify-content: center;
     align-items: center;
-    img{
-      position: absolute;
-      right: 0;
-      margin: 20px;
-      cursor: pointer;
-    }
-    .top_border{
-      width: 100%;
-      height: 10px;
-      border-top-left-radius: 5px;
-      border-top-right-radius: 5px;
-      background: linear-gradient(270deg, #337788 0%, #66AABB 100%);
-    }
+  }
+  .close_img{
+    position: absolute;
+    right: 0;
+    margin: 20px;
+    cursor: pointer;
+  }
+  .top_border{
+    width: 100%;
+    height: 10px;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    background: linear-gradient(270deg, #337788 0%, #66AABB 100%);
+  }
+  .member_login, .signup{
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
     p{
       font-weight: 700;
       font-size: 24px;
@@ -59,7 +79,7 @@ body{
       flex-direction: column;
       justify-content: center;
       align-items: center;
-      margin: 5px;
+      margin-top: 5px;
       input{
         margin-bottom: 10px;
         width: 310px;
@@ -69,8 +89,14 @@ body{
         border-radius: 5px;
         padding: 15px;
       }
+      p{
+        font-weight: 500;
+        font-size: 16px;
+        line-height: 13px;
+        padding-bottom: 0;
+      }
       button{
-        width: 154px;
+        width: 310px;
         height: 36px;
         background: #448899;
         border-radius: 5px;
@@ -79,25 +105,24 @@ body{
         font-size: 19px;
         line-height: 16px;
         color: #FFFFFF;
-        margin-bottom: 10px;
         cursor: pointer;
       }
-      p{
-        font-weight: 500;
-        font-size: 16px;
-        line-height: 13px;
-        span{
-          color: #666666;
-          cursor: pointer;
-        }:hover{
-          color: #002aff;
-        }
+    }
+    .option{
+      font-weight: 500;
+      font-size: 16px;
+      line-height: 13px;
+      margin-bottom: 5px;
+      span{
+        color: #666666;
+        cursor: pointer;
+      }:hover{
+        color: #002aff;
       }
     }
   }
   .signup{
     display: None;
-    height: 340px;
   }
 }
 
@@ -105,7 +130,7 @@ header{
   position: sticky;
   top: 0;
   background-color: #FFFFFF;
-  z-index: 999;
+  z-index: 99999;
   border: 1px solid #e7e7e7d1;
   display: flex;
   justify-content: center;
