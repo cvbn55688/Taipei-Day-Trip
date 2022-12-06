@@ -1,0 +1,57 @@
+<!-- This file contain the 'member system', 'header', and 'footer'. -->
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>台北一日遊</title>
+    <link rel="stylesheet" href="/CSS/style.css">
+</head>
+
+<body>
+    <div class="full_screen">
+        <div class="member_system">
+            <div class="top_border"></div>
+            <img class="close_img" src="/IMG/icon_close.png" alt="">
+            <div class="member_login">
+                <p>登入會員帳號</p>
+                <form action="">
+                    <input type="email" placeholder="輸入電子信箱" >
+                    <input type="password" placeholder="輸入密碼" >
+                    <button type="button">登入帳戶</button>
+                </form>
+                <p class="option">還沒有帳戶？<span class="signup_button" href="">點此註冊</span></p>
+            </div>
+            <div class="signup">
+                <p>註冊會員帳號</p>
+                <form action="", method="POST">
+                    <input type="text" name="name" placeholder="輸入姓名" >
+                    <input type="email" name="email" placeholder="輸入電子信箱" >
+                    <input type="password" name="password" placeholder="輸入密碼" >
+                    <button type="button">註冊帳戶</button>
+                </form>
+                <p class="option">已經有帳戶？<span class="login_button" href="">點此登入</span></p>
+            </div>
+        </div>
+    </div>
+    <header>
+        <nav>
+            <a href="/"><p>台北一日遊</p></a>
+            <ul>
+                <li><a href="/booking">預定行程</a></li>
+                <li class="member">登入/註冊</li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        {% block main %}{% endblock %}
+    </main>
+
+    <footer>
+        <p>COPYRIGHT@2021台北一日遊</p>
+    </footer>
+</body>
+{% block script %}{% endblock %}
+<script src="/JS/member_system.js"></script>
+</html>

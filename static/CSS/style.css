@@ -194,7 +194,7 @@ main {
 main .top {
   display: flex;
   justify-content: center;
-  background-image: url("../styles/img/welcome.png");
+  background-image: url("../IMG/welcome.png");
   height: 320px;
   width: 100%;
   background-repeat: no-repeat;

@@ -1,13 +1,13 @@
 from flask import *
 from mysql.connector import pooling
-from attraction_system import attraction_system
-from member_system import member_system
+from attraction.attraction_system import attraction_system
+from auth.member_system import member_system
 
 connection_pool = pooling.MySQLConnectionPool(
                                             host = 'localhost',
                                             port= "3306",
                                             user = 'root',
-                                            password = '',
+                                            password = 'zxc55332',
                                             database = 'website',
                                             pool_name="my_pool",
                                             pool_size = 5,
@@ -16,8 +16,9 @@ connection_pool = pooling.MySQLConnectionPool(
 
 
 app=Flask(__name__,
-    static_folder="static",
-    static_url_path="/")
+    static_folder="../static",
+    static_url_path="/",
+    template_folder='../templates')
 app.secret_key="test"
 app.config["JSON_AS_ASCII"]=False
 app.config["TEMPLATES_AUTO_RELOAD"]=True
