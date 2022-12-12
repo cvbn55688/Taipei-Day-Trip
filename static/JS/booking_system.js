@@ -23,14 +23,11 @@ function getBookingInfo(){
         .then(function (data) {
             data = data.data;
             if (data.length != 0){
-                let attractionID = 0;
+                let attractionIds = [];
                 data.forEach(element => {
                     attractionImg = element.attraction.image;
                     attractionName = element.attraction.name;
-                    if (element.attraction.id == attractionID){
-                        alert("注意，您有景點重複，請查明後再下訂，避免重複扣款。");
-                    };
-                    attractionID = element.attraction.id;
+                    attractionIds.push(element.attraction.id);
                     bookingId = element.attraction.booking_id;
                     date = element.date;
                     time = element.time;
@@ -89,6 +86,14 @@ function getBookingInfo(){
                     let newHr = document.createElement("hr");
                     journeyBox.appendChild(newHr);
                 });
+
+                let s = new Set(attractionIds);
+                if (attractionIds.length == s.size){
+                    console.log("陣列中沒有重複值");
+                } else {
+                    console.log("陣列中有重複值");
+                    alert("注意，您有景點重複，請查明後再下訂，避免重複扣款。");
+                }
             }else{
                 let noBooking = document.createElement("p");
                 noBooking.classList.add("showNoBooking");

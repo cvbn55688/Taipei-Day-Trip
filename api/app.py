@@ -20,12 +20,10 @@ app.register_blueprint(booking_system, url_prefix="")
 
 jwt = JWTManager(app)
 jwt.init_app(app)
-app.config["JWT_SECRET_KEY"] = "super-secret"  # Change this!
+app.config["JWT_SECRET_KEY"] = "super-secret" 
 app.config["JWT_ACCESS_TOKEN_EXPIRES"] = timedelta(minutes=30)
 app.config["JWT_REFRESH_TOKEN_EXPIRES"] = timedelta(days=7)
 
-# app.config["JWT_ACCESS_TOKEN_EXPIRES"] = timedelta(seconds=5)
-# app.config["JWT_REFRESH_TOKEN_EXPIRES"] = timedelta(seconds=10)
 
 # Pages
 @app.route("/")

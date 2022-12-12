@@ -8,7 +8,6 @@ attraction_system = Blueprint("attraction_system", __name__, static_folder="stat
 @attraction_system.route("/api/categories")
 def categories():
 	try:
-		print(connection_pool)
 		connection = connection_pool.get_connection()
 		cursor = connection.cursor()
 		cursor.execute('select categories from categories;')

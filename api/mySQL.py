@@ -6,7 +6,7 @@ def database_connection_pool():
                                             host = 'localhost',
                                             port= "3306",
                                             user = 'root',
-                                            password = 'zxc55332',
+                                            password = '',
                                             database = 'website',
                                             pool_name="my_pool",
                                             pool_size = 5,
