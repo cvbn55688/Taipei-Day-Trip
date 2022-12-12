@@ -952,7 +952,7 @@ footer p {
   }
   main .top_journey .journey .journey_card .imges, main .top_journey .showNoBooking .journey_card .imges {
     width: 100%;
-    height: 100%;
+    height: auto;
   }
   main .top_journey .journey .journey_card .delete, main .top_journey .showNoBooking .journey_card .delete {
     position: absolute;
@@ -960,6 +960,7 @@ footer p {
     bottom: 0;
   }
   main .top_journey .journey .journey_card .attraction_info, main .top_journey .showNoBooking .journey_card .attraction_info {
+    width: 100%;
     height: auto;
     margin: 0;
   }

@@ -905,7 +905,7 @@ footer{
           padding-bottom: 20px;
           .imges{
             width: 100%;
-            height: 100%;
+            height: auto;
           }
           .delete{
             position: absolute;
@@ -913,6 +913,7 @@ footer{
             bottom: 0;
           }
           .attraction_info{
+            width: 100%;
             height: auto;
             margin: 0;
           }
