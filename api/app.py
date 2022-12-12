@@ -2,18 +2,10 @@ from flask import *
 from mysql.connector import pooling
 from attraction.attraction_system import attraction_system
 from auth.member_system import member_system
-
-connection_pool = pooling.MySQLConnectionPool(
-                                            host = 'localhost',
-                                            port= "3306",
-                                            user = 'root',
-                                            password = 'zxc55332',
-                                            database = 'website',
-                                            pool_name="my_pool",
-                                            pool_size = 5,
-                                            charset="utf8"
-                                            )
-
+from booking.booking_system import booking_system
+from flask_jwt_extended import JWTManager
+from datetime import datetime
+from datetime import timedelta
 
 app=Flask(__name__,
     static_folder="../static",
@@ -24,6 +16,16 @@ app.config["JSON_AS_ASCII"]=False
 app.config["TEMPLATES_AUTO_RELOAD"]=True
 app.register_blueprint(attraction_system, url_prefix="")
 app.register_blueprint(member_system, url_prefix="")
+app.register_blueprint(booking_system, url_prefix="")
+
+jwt = JWTManager(app)
+jwt.init_app(app)
+app.config["JWT_SECRET_KEY"] = "super-secret"  # Change this!
+app.config["JWT_ACCESS_TOKEN_EXPIRES"] = timedelta(minutes=30)
+app.config["JWT_REFRESH_TOKEN_EXPIRES"] = timedelta(days=7)
+
+# app.config["JWT_ACCESS_TOKEN_EXPIRES"] = timedelta(seconds=5)
+# app.config["JWT_REFRESH_TOKEN_EXPIRES"] = timedelta(seconds=10)
 
 # Pages
 @app.route("/")

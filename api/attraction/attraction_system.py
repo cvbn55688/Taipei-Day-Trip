@@ -1,22 +1,14 @@
 from flask import *
 from mysql.connector import pooling
+from mySQL import database_connection_pool
+connection_pool = database_connection_pool()
 
 attraction_system = Blueprint("attraction_system", __name__, static_folder="static", template_folder="templates")
-
-connection_pool = pooling.MySQLConnectionPool(
-                                            host = 'localhost',
-                                            port= "3306",
-                                            user = 'root',
-                                            password = 'zxc55332',
-                                            database = 'website',
-                                            pool_name="my_pool",
-                                            pool_size = 5,
-                                            charset="utf8"
-                                            )
 
 @attraction_system.route("/api/categories")
 def categories():
 	try:
+		print(connection_pool)
 		connection = connection_pool.get_connection()
 		cursor = connection.cursor()
 		cursor.execute('select categories from categories;')

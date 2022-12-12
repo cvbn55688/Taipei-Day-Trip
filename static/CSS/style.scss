@@ -161,6 +161,9 @@ header{
           color: #666666;
         }
       }
+      .logout{
+        display: None;
+      }
     }
   }
 }
@@ -608,6 +611,146 @@ main{
 
     }
   }
+  .top_journey{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 1000px;
+    .user_journey{
+      color: #666666;
+      width: 100%;
+      margin: 40px 0 30px 0;
+      font-weight: 700;
+      font-size: 19px;
+      line-height: 16px;
+    }
+    .showNoBooking{
+      width: 980px;
+      color: #666666;
+      font-weight: 500;
+      font-size: 16px;
+      line-height: 13px;
+      margin-bottom: 30px;
+    }
+  }
+  .journey{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 980px;
+  }
+  .journey_card{
+    // border: 1px solid red;
+    display: flex;
+    width: 100%;
+    // margin-bottom: 40px;
+    // height: 200px;
+
+    .imges{
+        width: 250px;
+        height: 200px;
+        cursor: default;
+    }
+
+    .attraction_info{
+      margin-left: 30px;
+      width: 700px;
+      height: 170px;
+      .attraction_title{
+        padding: 5px 0;
+        margin-bottom: 25px;
+        color: #448899;
+        font-weight: 700;
+        font-size: 16px;
+        line-height: 18px;
+      }
+      p{
+        margin-bottom: 15px;
+        font-weight: 500;
+        font-size: 16px;
+        // line-height: 13px;
+        color: #666666;
+      }
+    }
+    img{
+      width: 30px;
+      height: 30px;
+      cursor: pointer;
+    }
+  }
+  
+  .mid_journey{
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 980px;
+    .contact_info, .payment{
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      .title{
+        margin-bottom: 20px;
+        color: #666666;
+        font-weight: 700;
+        font-size: 19px;
+        line-height: 16px;
+      }
+      form{
+        display: flex;
+        flex-direction: column;
+        span, p{
+          height: 38px;
+          margin-bottom: 15px;
+          color: #666666;
+          font-weight: 500;
+          font-size: 16px;
+          line-height: 13px;
+          input{
+            width: 200px;
+            height: 38px;
+            background: #FFFFFF;
+            border: 1px solid #E8E8E8;
+            border-radius: 5px;
+            padding: 5px;
+          }
+        }
+        .notice{
+          font-weight: 700;
+          margin: 20px 0 0 0;
+          height: auto;
+          line-height: 23px;
+        }
+      }
+    }
+    .confirm{
+      // border: 1px solid red;
+      width: 100%;
+      height: 100px;
+      display: flex;
+      flex-direction: column;
+
+      align-items: end;
+      p{
+        color: #666666;
+        font-weight: 700;
+        font-size: 16px;
+        line-height: 13px;
+      }
+      button{
+        // width: 173px;
+        margin: 22px 0;
+        padding: 10px 15px;
+        background: #448899;
+        border-radius: 5px;
+        border: 0;
+        font-weight: 400;
+        font-size: 19px;
+        line-height: 16px;
+        color: #FFFFFF;
+        cursor: pointer;
+      }
+    }
+  }
 }
 
 
@@ -620,7 +763,7 @@ footer{
   height: 104px;
   background: #757575;
   // position: relative;
-  // bottom: 0;
+  // bottom: 1;
   width: 100%;
   p{
     font-weight: 700;
@@ -673,6 +816,26 @@ footer{
   main .info{
     width: 100%;
     padding: 0 20px;
+  }
+  main{
+    .top_journey{
+      width: 90%;
+      .journey, .showNoBooking{
+        width: 90%;
+        hr{
+          width: 95vw;
+        }
+      }
+    }
+    .mid_journey{
+      width: 90%;
+    }
+  }
+  .mid_journey{
+    width: 90%;
+    hr{
+      width: 95vw;
+    }
   }
 }
 
@@ -727,4 +890,45 @@ footer{
     }
   }
 
+}
+
+@media screen and (max-width:650px) {
+  main{
+    .top_journey{
+      width: 100%;
+      padding: 0 10px;
+      .journey, .showNoBooking{
+        width: 100%;
+        .journey_card{
+          position: relative;
+          display: block;
+          padding-bottom: 20px;
+          .imges{
+            width: 100%;
+            height: 100%;
+          }
+          .delete{
+            position: absolute;
+            right: 0;
+            bottom: 0;
+          }
+          .attraction_info{
+            height: auto;
+            margin: 0;
+          }
+        }
+        hr{
+          width: 100%;
+        }
+      }
+    }
+    .mid_journey{
+      padding: 0 10px;
+      width: 100%;
+      hr{
+        width: 100%;
+      }
+    }
+  }
+  
 }

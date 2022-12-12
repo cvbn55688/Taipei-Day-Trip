@@ -1,49 +1,44 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>預定行程</title>
-    <link rel="stylesheet" href="/styles/style.css">
-</head>
-<body>
-    <div class="full_screen">
-        <div class="member_system">
-            <div class="top_border"></div>
-            <img class="close_img" src="/styles/img/icon_close.png" alt="">
-            <div class="member_login">
-                <p>登入會員帳號</p>
-                <form action="">
-                    <input type="text" placeholder="輸入電子信箱" >
-                    <input type="password" placeholder="輸入密碼" >
-                    <button type="button">登入帳戶</button>
-                    <p>還沒有帳戶？<span class="signup_button" href="">點此註冊</span></p>
-                </form>
-            </div>
-            <div class="signup">
-                <p>註冊會員帳號</p>
-                <form action="", method="POST">
-                    <input type="text" name="name" placeholder="輸入姓名" >
-                    <input type="text" name="email" placeholder="輸入電子信箱" >
-                    <input type="password" name="password" placeholder="輸入密碼" >
-                    <button type="reset">註冊帳戶</button>
-                    <p>已經有帳戶？<span class="login_button" href="">點此登入</span></p>
-                </form>
-            </div>
-        </div>
+{% extends "base.html" %}
+{% block main %}
+<section class="top_journey">
+    <p class="user_journey">您好，<span>ZH</span>，待預定的行程如下：</p>
+    <div class="journey"></div>
+</section>
+
+
+<section class="mid_journey">
+    <div class="contact_info">
+        <p class="title">您的聯絡資訊</p>
+        <form action="">
+            <span>聯絡姓名：<input></input></span>
+            <span>聯絡信箱：<input></input></span>
+            <span>手機號碼：<input></input></span>
+            <p class="notice">請保持手機暢通，準時到達，導覽人員將用手機與您聯繫，務必留下正確的聯絡方式。
+            </p>
+        </form>
     </div>
-    <header>
-        <nav>
-            <a href="/"><p>台北一日遊</p></a>
-            <ul>
-                <li><a href="/booking">預定行程</a></li>
-                <li class="member">登入/註冊</li>
-            </ul>
-        </nav>
-    </header>
-    <h1 style="color : red">此功能尚未開通</h1>
-    <a href="/" style="text-decoration: underline ;"><h2>返回首頁</ㄕ></a>
-</body>
-<script src="/member_system.js"></script>
-</html>
+
+    <hr>
+
+    <div class="payment">
+        <p class="title">信用卡資訊</p>
+        <form action="">
+            <span>卡片號碼：<input type="tel" pattern="[0-9\s]{13,19}" autocomplete="cc-number" maxlength="16" placeholder="xxxx xxxx xxxx xxxx"></input></span>
+            <span>過期時間：<input placeholder="MM/YY"></input></span>
+            <span>驗證密碼：<input placeholder="CVV"></input></span>
+        </form>
+    </div>
+
+    <hr>
+
+    <div class="confirm">
+        <p>總價：新台幣<span class="sum">0</span>元</p>
+        <button type="button">確認訂購並付款</button>
+    </div>
+</section>
+
+{% endblock %}
+
+{% block script %}
+<script src="/JS/booking_system.js"></script>
+{% endblock %}
