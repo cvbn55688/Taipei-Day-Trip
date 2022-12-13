@@ -1,5 +1,5 @@
-let url = location.href;
-let arrtacrion_id = url.split("/").pop();
+const url = location.href;
+const arrtacrion_id = url.split("/").pop();
 
 function get_attraction() {  
     return fetch(
@@ -152,5 +152,53 @@ morning.addEventListener("click", () => {
 });
 afternoon.addEventListener("click", () => {
   cost.textContent = "新台幣2500元";
-})
+});
 
+const bookingSubmit = document.querySelector(".booking button");
+bookingSubmit.addEventListener("click", ()=>{
+    let bookingDate = document.querySelector(".booking .date input");
+    let bookingTime = document.querySelectorAll(".booking .time input");
+    let morning = (window.getComputedStyle(bookingTime[0],'::before').background).slice(5,6);
+    let afternoon = (window.getComputedStyle(bookingTime[1],'::before').background).slice(5,6);
+    let price = 0;
+    bookingTime = "";
+
+    if (bookingDate.value == ""){
+      alert("請填入日期");
+    }else{
+      bookingDate = bookingDate.value;
+      if (morning != 0) {
+        bookingTime = "morning";
+        price = 2000;
+      }else{
+        bookingTime = "afternoon";
+        price = 2500;
+      };
+      fetch(
+        `/api/booking`, {
+            method: "POST",
+            body: JSON.stringify({
+            attractionId: arrtacrion_id,
+            date: bookingDate,
+            time:  bookingTime,
+            price: price
+            }),
+            headers: {
+              "Content-type": "application/json; charset=UTF-8",
+            }
+          })
+        .then(function(response){
+          if (response.status == 403){
+            show_black_screen();
+          }else{
+            return response.json();
+          };
+        })
+        .then(function (data) {
+          if (data.ok){
+            alert("預約成功");
+            document.location.href = "/booking";
+          };
+        });
+    };
+});

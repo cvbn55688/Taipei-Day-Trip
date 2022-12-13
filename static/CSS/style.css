@@ -185,6 +185,9 @@ header nav ul li {
 header nav ul li a {
   color: #666666;
 }
+header nav ul .logout {
+  display: None;
+}
 
 main {
   display: flex;
@@ -194,7 +197,7 @@ main {
 main .top {
   display: flex;
   justify-content: center;
-  background-image: url("../styles/img/welcome.png");
+  background-image: url("../IMG/welcome.png");
   height: 320px;
   width: 100%;
   background-repeat: no-repeat;
@@ -680,6 +683,136 @@ main .info .title {
 main .info .address {
   margin: 20px 0;
 }
+main .top_journey {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 1000px;
+}
+main .top_journey .user_journey {
+  color: #666666;
+  width: 100%;
+  margin: 40px 0 30px 0;
+  font-weight: 700;
+  font-size: 19px;
+  line-height: 16px;
+}
+main .top_journey .showNoBooking {
+  width: 980px;
+  color: #666666;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 13px;
+  margin-bottom: 30px;
+}
+main .journey {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 980px;
+}
+main .journey_card {
+  display: flex;
+  width: 100%;
+}
+main .journey_card .imges {
+  width: 250px;
+  height: 200px;
+  cursor: default;
+}
+main .journey_card .attraction_info {
+  margin-left: 30px;
+  width: 700px;
+  height: 170px;
+}
+main .journey_card .attraction_info .attraction_title {
+  padding: 5px 0;
+  margin-bottom: 25px;
+  color: #448899;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 18px;
+}
+main .journey_card .attraction_info p {
+  margin-bottom: 15px;
+  font-weight: 500;
+  font-size: 16px;
+  color: #666666;
+}
+main .journey_card img {
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+}
+main .mid_journey {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 980px;
+}
+main .mid_journey .contact_info, main .mid_journey .payment {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+main .mid_journey .contact_info .title, main .mid_journey .payment .title {
+  margin-bottom: 20px;
+  color: #666666;
+  font-weight: 700;
+  font-size: 19px;
+  line-height: 16px;
+}
+main .mid_journey .contact_info form, main .mid_journey .payment form {
+  display: flex;
+  flex-direction: column;
+}
+main .mid_journey .contact_info form span, main .mid_journey .contact_info form p, main .mid_journey .payment form span, main .mid_journey .payment form p {
+  height: 38px;
+  margin-bottom: 15px;
+  color: #666666;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 13px;
+}
+main .mid_journey .contact_info form span input, main .mid_journey .contact_info form p input, main .mid_journey .payment form span input, main .mid_journey .payment form p input {
+  width: 200px;
+  height: 38px;
+  background: #FFFFFF;
+  border: 1px solid #E8E8E8;
+  border-radius: 5px;
+  padding: 5px;
+}
+main .mid_journey .contact_info form .notice, main .mid_journey .payment form .notice {
+  font-weight: 700;
+  margin: 20px 0 0 0;
+  height: auto;
+  line-height: 23px;
+}
+main .mid_journey .confirm {
+  width: 100%;
+  height: 100px;
+  display: flex;
+  flex-direction: column;
+  align-items: end;
+}
+main .mid_journey .confirm p {
+  color: #666666;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 13px;
+}
+main .mid_journey .confirm button {
+  margin: 22px 0;
+  padding: 10px 15px;
+  background: #448899;
+  border-radius: 5px;
+  border: 0;
+  font-weight: 400;
+  font-size: 19px;
+  line-height: 16px;
+  color: #FFFFFF;
+  cursor: pointer;
+}
 
 footer {
   display: flex;
@@ -739,6 +872,24 @@ footer p {
     width: 100%;
     padding: 0 20px;
   }
+  main .top_journey {
+    width: 90%;
+  }
+  main .top_journey .journey, main .top_journey .showNoBooking {
+    width: 90%;
+  }
+  main .top_journey .journey hr, main .top_journey .showNoBooking hr {
+    width: 95vw;
+  }
+  main .mid_journey {
+    width: 90%;
+  }
+  .mid_journey {
+    width: 90%;
+  }
+  .mid_journey hr {
+    width: 95vw;
+  }
 }
 @media screen and (max-width: 600px) {
   main .top .slogan {
@@ -784,5 +935,43 @@ footer p {
   main .first .profile .booking #p_2 {
     height: 28px;
     line-height: 17px;
+  }
+}
+@media screen and (max-width: 650px) {
+  main .top_journey {
+    width: 100%;
+    padding: 0 10px;
+  }
+  main .top_journey .journey, main .top_journey .showNoBooking {
+    width: 100%;
+  }
+  main .top_journey .journey .journey_card, main .top_journey .showNoBooking .journey_card {
+    position: relative;
+    display: block;
+    padding-bottom: 20px;
+  }
+  main .top_journey .journey .journey_card .imges, main .top_journey .showNoBooking .journey_card .imges {
+    width: 100%;
+    height: auto;
+  }
+  main .top_journey .journey .journey_card .delete, main .top_journey .showNoBooking .journey_card .delete {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+  }
+  main .top_journey .journey .journey_card .attraction_info, main .top_journey .showNoBooking .journey_card .attraction_info {
+    width: 100%;
+    height: auto;
+    margin: 0;
+  }
+  main .top_journey .journey hr, main .top_journey .showNoBooking hr {
+    width: 100%;
+  }
+  main .mid_journey {
+    padding: 0 10px;
+    width: 100%;
+  }
+  main .mid_journey hr {
+    width: 100%;
   }
 }/*# sourceMappingURL=style.css.map */

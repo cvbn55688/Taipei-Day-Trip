@@ -1,4 +1,5 @@
 const member_button = document.querySelector(".member");
+const logout_button = document.querySelector(".logout");
 const li_div = document.querySelector("nav ul");
 const close_button = document.querySelector(".close_img");
 const login_page = document.querySelector(".full_screen");
@@ -9,6 +10,7 @@ const login_submit = document.querySelector(".member_login button");
 const signup_submit = document.querySelector(".signup button");
 const signup_button = document.querySelector(".signup_button");
 const login_button = document.querySelector(".login_button");
+const booking_button = document.querySelector(".member_booking");
 const email_regex = /^([a-zA-Z0-9_\.\-\+])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
 
 member_button.addEventListener("click", show_black_screen);
@@ -40,13 +42,13 @@ function show_login(){
 function erase_message(user_data_form){
     setTimeout(() => {
         document.addEventListener("click", ()=>{
-            user_data_form.removeChild(sing_message)
+            user_data_form.removeChild(sing_message);
         }, {once : true});
     }, 100);
-}
+};
 
 signup_submit.addEventListener("click", singup);
-let sing_message = document.createElement("p")
+let sing_message = document.createElement("p");
 function singup(){
     let user_data_form = document.querySelector(".signup form");
     let user_name = user_data_form[0].value;
@@ -56,12 +58,12 @@ function singup(){
         sing_message.textContent = "姓名、信箱、密碼皆不可空白";
         sing_message.style.color = "red";
         user_data_form.appendChild(sing_message);
-        erase_message(user_data_form)
+        erase_message(user_data_form);
     }else if(!email_regex.test(user_email)){
         sing_message.textContent = "信箱不符合格式";
         sing_message.style.color = "red";
         user_data_form.appendChild(sing_message);
-        erase_message(user_data_form)
+        erase_message(user_data_form);
     }else{
         fetch(
             `/api/user`, {
@@ -83,21 +85,20 @@ function singup(){
                 sing_message.textContent = "註冊成功";
                 sing_message.style.color = "green";
                 user_data_form.appendChild(sing_message);
-                erase_message(user_data_form)
+                erase_message(user_data_form);
             }else{
                 sing_message.textContent = data["message"];
                 sing_message.style.color = "red";
                 user_data_form.appendChild(sing_message);
-                erase_message(user_data_form)
+                erase_message(user_data_form);
             };
             
-          }
-        );
+        });
     };
     
 };
 
-login_submit.addEventListener("click", login)
+login_submit.addEventListener("click", login);
 function login(){
     let user_data_form = document.querySelector(".member_login form");
     let user_email = user_data_form[0].value;
@@ -106,12 +107,12 @@ function login(){
         sing_message.textContent = "信箱、密碼皆不可空白";
         sing_message.style.color = "red";
         user_data_form.appendChild(sing_message);
-        erase_message(user_data_form)
+        erase_message(user_data_form);
     }else if(!email_regex.test(user_email)){
         sing_message.textContent = "信箱不符合格式";
         sing_message.style.color = "red";
         user_data_form.appendChild(sing_message);
-        erase_message(user_data_form)
+        erase_message(user_data_form);
     }else{
         fetch(
             `/api/user/auth`, {
@@ -130,12 +131,12 @@ function login(){
               .then(function (data) {
                 if (data["ok"]){
                     alert("登入成功");
-                    document.location.href = location.href
+                    document.location.href = location.href;
                 }else{
                     sing_message.textContent = data["message"];
                     sing_message.style.color = "red";
                     user_data_form.appendChild(sing_message);
-                    erase_message(user_data_form)
+                    erase_message(user_data_form);
                 };
             });
         
@@ -143,11 +144,10 @@ function login(){
 };
 
 function check_login_state(){
-    fetch(
+    return fetch(
         `/api/user/auth`, {
             method: "GET",
-        }
-        )
+        })
         .then(function(response){
             return response.json();
         })
@@ -157,18 +157,35 @@ function check_login_state(){
                 user_id = data["id"];
                 user_name = data["name"];
                 member_button.style.display = "None";
-                let logout_button = document.createElement("li");
-                logout_button.textContent = "登出系統";
-                li_div.appendChild(logout_button);
-                logout_button.addEventListener("click", ()=>{
-                    logout();
-                });
+                logout_button.style.display = "block"
+                return user_name
+            }else if (document.cookie != ""){
+                let refresh_token = (document.cookie.split("=")[1].split(';')[0]);
+                fetch(
+                    `/refresh`, {
+                        method: "POST",
+                        headers: {
+                            'Authorization': `Bearer ${refresh_token} `,
+                        },
+                    })
+                    .then(function(response){
+                        return response.json();
+                    })
+                    .then(function (data){
+                        if (data["ok"]){
+                            document.location.href = location.href;
+                        }else{
+                            logout("expired");
+                        };
+                    });
+            }else{
+                return "isLogout";
             };
         });
 };
-check_login_state()
+check_login_state();
 
-function logout(){
+function logout(logout_event){
     fetch(
         `/api/user/auth`, {
             method: "DELETE",
@@ -178,7 +195,26 @@ function logout(){
         return response.json();
     })
     .then(function (data) {
-        alert("已成功登出");
-        document.location.href = location.href
+        if (logout_event == "user_logout"){
+            alert("已成功登出");
+        }else{
+            alert("登入逾時，請重新登入");
+        };
+        document.location.href = location.href;
     });
 };
+
+logout_button.addEventListener("click", ()=>{
+    logout("user_logout");
+});
+
+booking_button.addEventListener("click", ()=>{
+    let state = check_login_state();
+    state.then(function(response){
+        if (response == "isLogout"){
+            show_black_screen();
+        }else{
+            document.location.href = "/booking";
+        };
+    });
+});

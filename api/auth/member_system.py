@@ -1,26 +1,12 @@
 from flask import *
 from mysql.connector import pooling
-from flask_jwt_extended import create_access_token
-from flask_jwt_extended import get_jwt_identity
-from flask_jwt_extended import decode_token
-import jwt
-
-
+from flask_jwt_extended import create_access_token, create_refresh_token
+from flask_jwt_extended import get_jwt_identity, jwt_required
+from flask_jwt_extended import decode_token, JWTManager
+from mySQL import database_connection_pool
+connection_pool = database_connection_pool()
 
 member_system = Blueprint("member_system", __name__, static_folder="static", template_folder="templates")
-
-connection_pool = pooling.MySQLConnectionPool(
-                                            host = 'localhost',
-                                            port= "3306",
-                                            user = 'root',
-                                            password = '',
-                                            database = 'website',
-                                            pool_name="my_pool",
-                                            pool_size = 5,
-                                            charset="utf8"
-                                            )
-
-
 
 @member_system.route("/api/user", methods=["POST"])
 def sign():
@@ -66,9 +52,11 @@ def login():
 
             if records != None:
                 user_data = {"user_id": records[0], "user_name": records[1], "user_email": records[2]}
-                encoded_jwt = jwt.encode(user_data, "secret", algorithm="HS256")
+                access_token = create_access_token(identity=user_data)
+                refresh_token = create_refresh_token(identity=user_data)
                 res = make_response({"ok": True}, 200)
-                res.set_cookie("Set-Cookie", value=encoded_jwt, max_age=60*60*24*7)
+                res.set_cookie("refresh_token", value=refresh_token)
+                res.set_cookie("access_token", value=access_token)
                 return res
 
             else:
@@ -82,18 +70,27 @@ def login():
                 connection.close()
     
     if request.method == "GET":
-        user_data = request.cookies.get('Set-Cookie')
-        if user_data != None:
-            user_data = jwt.decode(user_data, "secret", algorithms=["HS256"])
+        user_data = request.cookies.get('access_token')
+        try:
+            user_data = decode_token(user_data)["sub"]
             user_id = user_data["user_id"]
             user_name = user_data["user_name"]
             user_email = user_data["user_email"]
-            return {"data": {"id": user_id, "name": user_name}, "email": user_email}, 200
-        else:
-            return {"data": None}, 200
+            return {"data": {"id": user_id, "name": user_name, "email": user_email}}, 200
+        except:
+            return {"data" : None}
     
     if request.method == "DELETE":
         res = make_response({"ok": True}, 200)
-        res.set_cookie('Set-Cookie', value='', expires=0)
+        res.set_cookie('access_token', value='', expires=0)
+        res.set_cookie('refresh_token', value='', expires=0)
         return res
         
+@member_system.post("/refresh")
+@jwt_required(refresh=True)
+def refresh():
+    identity = get_jwt_identity()
+    access_token = create_access_token(identity=identity)
+    res = make_response({"ok": True}, 200)
+    res.set_cookie("access_token", value=access_token)
+    return res
