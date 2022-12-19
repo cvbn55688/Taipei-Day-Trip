@@ -1,27 +1,24 @@
-{% extends "base.html" %}
-{% block main %}
+{% extends "base.html" %} {% block main %}
 <div class="top">
-    <div class="slogan">
-        <p class="title">輕鬆享受台北一日悠閒</p>
-        <p class="subtitle">探索每個角落，體驗城市的深度旅遊行程</p>
-        <div class="search_bar">
-            <input type="text" placeholder="輸入景點名稱查詢" 
-            onclick="this.placeholder=''" onblur="placeholder='輸入景點名稱查詢'">
-            <div class="img_box">
-                <img src="/IMG/icon_search.png" alt="">
-            </div>
-            
-        </div>
-        <div class="category">
-        </div>
+  <div class="slogan">
+    <p class="title">輕鬆享受台北一日悠閒</p>
+    <p class="subtitle">探索每個角落，體驗城市的深度旅遊行程</p>
+    <div class="search_bar">
+      <input
+        type="text"
+        placeholder="輸入景點名稱查詢"
+        onclick="this.placeholder=''"
+        onblur="placeholder='輸入景點名稱查詢'"
+      />
+      <div class="img_box">
+        <img src="/IMG/icon_search.png" alt="" />
+      </div>
     </div>
+    <div class="category"></div>
+  </div>
 </div>
 
-<div class="mid">
-    
-</div>
-{% endblock %}
-
-{% block script %}
+<div class="mid"></div>
+{% endblock %} {% block script %}
 <script src="/JS/app.js"></script>
 {% endblock %}

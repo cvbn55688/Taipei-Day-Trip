@@ -1,148 +1,144 @@
 const url = location.href;
-const arrtacrion_id = url.split("/").pop();
+const arrtacrionId = url.split("/").pop();
 
-function get_attraction() {  
-    return fetch(
-      `/api/attraction/${arrtacrion_id}`
-    )
+function getAttraction() {
+  return fetch(`/api/attraction/${arrtacrionId}`)
     .then(function (response) {
       return response.json();
     })
     .then(function (data) {
-        data = data["data"];
-        attraction_name = data["name"];
-        category = data["category"].replace(/\s+/g,'');
-        mrt = data["mrt"];
-        description = data["description"];
-        address = data["address"];
-        transport = data["transport"];
-        imgs = data["images"];
+      data = data["data"];
+      attractionName = data["name"];
+      category = data["category"].replace(/\s+/g, "");
+      mrt = data["mrt"];
+      description = data["description"];
+      address = data["address"];
+      transport = data["transport"];
+      imgs = data["images"];
 
-        document.title = attraction_name;
-        const img_div = document.querySelector(".imges");
-        imgs.forEach(img => {
-          let new_img = document.createElement("img");
-          new_img.src = img;
-          img_div.appendChild(new_img);
+      document.title = attractionName;
+      const img_div = document.querySelector(".imges");
+      imgs.forEach((img) => {
+        let newImg = document.createElement("img");
+        newImg.src = img;
+        img_div.appendChild(newImg);
+      });
 
-        });
+      const arrtactionTitleDiv = document.querySelector(".arrtaction_title");
+      let attractionTitle = document.createElement("p");
+      attractionTitle.classList.add("profile_title");
+      attractionTitle.textContent = attractionName;
+      arrtactionTitleDiv.appendChild(attractionTitle);
 
-        const arrtaction_title_div = document.querySelector(".arrtaction_title");
-        let attraction_title = document.createElement("p");
-        attraction_title.classList.add("profile_title");
-        attraction_title.textContent = attraction_name;
-        arrtaction_title_div .appendChild(attraction_title);
+      let attractionSubtitle = document.createElement("p");
+      attractionSubtitle.classList.add("profile_subtitle");
+      if (mrt) {
+        attractionSubtitle.textContent = `${category} at ${mrt}`;
+      } else {
+        attractionSubtitle.textContent = `${category}`;
+      }
+      arrtactionTitleDiv.appendChild(attractionSubtitle);
 
-        let attraction_subtitle = document.createElement("p");
-        attraction_subtitle.classList.add("profile_subtitle");
-        if (mrt){
-            attraction_subtitle.textContent = `${category} at ${mrt}`
-        }else{
-            attraction_subtitle.textContent = `${category}`
-        };
-        arrtaction_title_div .appendChild(attraction_subtitle);
+      const descriptionDiv = document.querySelector(".description");
+      let description_p = document.createElement("p");
+      description_p.textContent = description;
+      descriptionDiv.appendChild(description_p);
 
-        const description_div = document.querySelector(".description");
-        let description_p = document.createElement("p");
-        description_p.textContent = description;
-        description_div.appendChild(description_p);
+      const addressDiv = document.querySelector(".address");
+      let addressP = document.createElement("p");
+      addressP.textContent = address;
+      addressDiv.appendChild(addressP);
 
-        const address_div = document.querySelector(".address");
-        let address_p = document.createElement("p");
-        address_p.textContent = address;
-        address_div.appendChild(address_p);
+      const transportDiv = document.querySelector(".transport");
+      let transportP = document.createElement("p");
+      transportP.textContent = transport;
+      transportDiv.appendChild(transportP);
 
-        const transport_div = document.querySelector(".transport");
-        let transport_p = document.createElement("p");
-        transport_p.textContent = transport;
-        transport_div.appendChild(transport_p);
-        
-        img_items = document.querySelectorAll(".imges img");
-        return img_items
+      imgItems = document.querySelectorAll(".imges img");
+      return imgItems;
     });
-};
-let imges = get_attraction();
+}
+let imges = getAttraction();
 let current = 0;
 
 imges.then((value) => {
-    const picture_div = document.querySelector(".dot");
-    for (let i = 0; i < value.length; i++){
-      let new_dot = document.createElement("div");
-      new_dot.classList.add("dot_child");
-      new_dot.setAttribute("id", i);
-      picture_div.appendChild(new_dot);
-    };
-    const dot_div = document.querySelectorAll(".dot_child");
-    dot_div[current].style.backgroundColor = "#000000";  
-    picture_div.addEventListener("click",get_user_dot);
-    function get_user_dot(eve){
-      id = eve.target.id;
-      if (id != ""){
-        dot_div[current].style.backgroundColor = "#ffffff"; 
-        change_pic(Number(id));
-      }
+  const pictureDiv = document.querySelector(".dot");
+  for (let i = 0; i < value.length; i++) {
+    let newDot = document.createElement("div");
+    newDot.classList.add("dot_child");
+    newDot.setAttribute("id", i);
+    pictureDiv.appendChild(newDot);
+  }
+  const dotDiv = document.querySelectorAll(".dot_child");
+  dotDiv[current].style.backgroundColor = "#000000";
+  pictureDiv.addEventListener("click", getUserDot);
+  function getUserDot(eve) {
+    id = eve.target.id;
+    if (id != "") {
+      dotDiv[current].style.backgroundColor = "#ffffff";
+      changePic(Number(id));
     }
-    picture_div.addEventListener("mouseover",(eve) => {
-      id = eve.target.id;
-      if (id != current && id != ""){
-        eve.target.style.backgroundColor = "#000000"; 
-        eve.target.style.animation = "appear_dot 0.25s forwards";
-      }
-    })
-    picture_div.addEventListener("mouseout",(eve) => {
-      id = eve.target.id;
-      if (id != current && id != ""){
-        eve.target.style.backgroundColor = "#ffffff"; 
-        eve.target.style.animation = "disappear_dot 0.25s forwards";
-      }
-    })
-    function change_pic(id){
-      if (id > current){
-        value[current].style.animation = "hideRight 1s forwards";
-        current = id;
-        value[current].style.animation = "showRight 1s forwards";
-      }
-      if (id < current){
-        value[current].style.animation = "hideLeft 1s forwards";
-        current = id;
-        value[current].style.animation = "showLeft 1s forwards";
-      }
-      dot_div[current].style.backgroundColor = "#000000";  
+  }
+  pictureDiv.addEventListener("mouseover", (eve) => {
+    id = eve.target.id;
+    if (id != current && id != "") {
+      eve.target.style.backgroundColor = "#000000";
+      eve.target.style.animation = "appear_dot 0.25s forwards";
     }
-    function next_pic(){
-      value[current].style.animation = "hideRight 1s forwards";
-      value[current >= value.length - 1 ? 0 : current + 1].style.animation =
-      "showRight 1s forwards";
-      dot_div[current].style.backgroundColor = "#ffffff"; 
-      if (current < value.length - 1){
-        current++;
-        dot_div[current].style.backgroundColor = "#000000";  
-      }else{
-        current = 0;
-        dot_div[current].style.backgroundColor = "#000000"; 
-      };
-    };
-    function precious_pic(){
-      value[current].style.animation = "hideLeft  1s forwards";
-      value[current > 0 ? current - 1 : value.length -1].style.animation =
-      "showLeft 1s forwards";
-      dot_div[current].style.backgroundColor = "#ffffff"; 
-      if (current > 0 ){
-        current--;
-        dot_div[current].style.backgroundColor = "#000000";  
-      }else{
-        current = value.length -1;
-        dot_div[current].style.backgroundColor = "#000000";  
-      };
-    };
-    const next_button = document.querySelector(".right_arrow");
-    const previous_button = document.querySelector(".left_arrow");
-    const all_pic_touch = document.querySelector(".picture");
-    next_button.addEventListener("click", next_pic);
-    previous_button.addEventListener("click", precious_pic);
-    const pic_turn = window.setInterval(next_pic, 3000);
-
   });
+  pictureDiv.addEventListener("mouseout", (eve) => {
+    id = eve.target.id;
+    if (id != current && id != "") {
+      eve.target.style.backgroundColor = "#ffffff";
+      eve.target.style.animation = "disappear_dot 0.25s forwards";
+    }
+  });
+  function changePic(id) {
+    if (id > current) {
+      value[current].style.animation = "hideRight 1s forwards";
+      current = id;
+      value[current].style.animation = "showRight 1s forwards";
+    }
+    if (id < current) {
+      value[current].style.animation = "hideLeft 1s forwards";
+      current = id;
+      value[current].style.animation = "showLeft 1s forwards";
+    }
+    dotDiv[current].style.backgroundColor = "#000000";
+  }
+  function nextPic() {
+    value[current].style.animation = "hideRight 1s forwards";
+    value[current >= value.length - 1 ? 0 : current + 1].style.animation =
+      "showRight 1s forwards";
+    dotDiv[current].style.backgroundColor = "#ffffff";
+    if (current < value.length - 1) {
+      current++;
+      dotDiv[current].style.backgroundColor = "#000000";
+    } else {
+      current = 0;
+      dotDiv[current].style.backgroundColor = "#000000";
+    }
+  }
+  function preciousPic() {
+    value[current].style.animation = "hideLeft  1s forwards";
+    value[current > 0 ? current - 1 : value.length - 1].style.animation =
+      "showLeft 1s forwards";
+    dotDiv[current].style.backgroundColor = "#ffffff";
+    if (current > 0) {
+      current--;
+      dotDiv[current].style.backgroundColor = "#000000";
+    } else {
+      current = value.length - 1;
+      dotDiv[current].style.backgroundColor = "#000000";
+    }
+  }
+  const nextButton = document.querySelector(".right_arrow");
+  const previousButton = document.querySelector(".left_arrow");
+  const allPicTouch = document.querySelector(".picture");
+  nextButton.addEventListener("click", nextPic);
+  previousButton.addEventListener("click", preciousPic);
+  const picTurn = window.setInterval(nextPic, 3000);
+});
 
 const morning = document.querySelector(".morning");
 const afternoon = document.querySelector(".afternoon");
@@ -155,50 +151,53 @@ afternoon.addEventListener("click", () => {
 });
 
 const bookingSubmit = document.querySelector(".booking button");
-bookingSubmit.addEventListener("click", ()=>{
-    let bookingDate = document.querySelector(".booking .date input");
-    let bookingTime = document.querySelectorAll(".booking .time input");
-    let morning = (window.getComputedStyle(bookingTime[0],'::before').background).slice(5,6);
-    let afternoon = (window.getComputedStyle(bookingTime[1],'::before').background).slice(5,6);
-    let price = 0;
-    bookingTime = "";
+bookingSubmit.addEventListener("click", () => {
+  let bookingDate = document.querySelector(".booking .date input");
+  let bookingTime = document.querySelectorAll(".booking .time input");
+  let morning = window
+    .getComputedStyle(bookingTime[0], "::before")
+    .background.slice(5, 6);
+  let afternoon = window
+    .getComputedStyle(bookingTime[1], "::before")
+    .background.slice(5, 6);
+  let price = 0;
+  bookingTime = "";
 
-    if (bookingDate.value == ""){
-      alert("請填入日期");
-    }else{
-      bookingDate = bookingDate.value;
-      if (morning != 0) {
-        bookingTime = "morning";
-        price = 2000;
-      }else{
-        bookingTime = "afternoon";
-        price = 2500;
-      };
-      fetch(
-        `/api/booking`, {
-            method: "POST",
-            body: JSON.stringify({
-            attractionId: arrtacrion_id,
-            date: bookingDate,
-            time:  bookingTime,
-            price: price
-            }),
-            headers: {
-              "Content-type": "application/json; charset=UTF-8",
-            }
-          })
-        .then(function(response){
-          if (response.status == 403){
-            show_black_screen();
-          }else{
-            return response.json();
-          };
-        })
-        .then(function (data) {
-          if (data.ok){
-            alert("預約成功");
-            document.location.href = "/booking";
-          };
-        });
-    };
+  if (bookingDate.value == "") {
+    alert("請填入日期");
+  } else {
+    bookingDate = bookingDate.value;
+    if (morning != 0) {
+      bookingTime = "morning";
+      price = 2000;
+    } else {
+      bookingTime = "afternoon";
+      price = 2500;
+    }
+    fetch(`/api/booking`, {
+      method: "POST",
+      body: JSON.stringify({
+        attractionId: arrtacrionId,
+        date: bookingDate,
+        time: bookingTime,
+        price: price,
+      }),
+      headers: {
+        "Content-type": "application/json; charset=UTF-8",
+      },
+    })
+      .then(function (response) {
+        if (response.status == 403) {
+          showBlackScreen();
+        } else {
+          return response.json();
+        }
+      })
+      .then(function (data) {
+        if (data.ok) {
+          alert("預約成功");
+          document.location.href = "/booking";
+        }
+      });
+  }
 });

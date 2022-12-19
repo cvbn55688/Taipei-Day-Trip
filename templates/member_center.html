@@ -1,0 +1,23 @@
+{% extends "base.html" %} {% block head %}
+<link rel="stylesheet" href="/CSS/member-center.css" />
+{% endblock %} {% block main %}
+<section class="member-cneter-header">
+  <ul>
+    <li class="already-order">訂單及旅程</li>
+  </ul>
+</section>
+
+<section class="show-orders">
+  <div class="card">
+    <div class="title">
+      <p>訂單編號：<span class="number">20221219154457</span></p>
+      <img src="/IMG/2203515_media_music_play_triangle_icon.png" alt="" />
+    </div>
+    <div class="trips"></div>
+  </div>
+</section>
+
+<section></section>
+{% endblock %} {% block script %}
+<script src="/JS/memberCenter.js"></script>
+{% endblock %}

@@ -3,8 +3,8 @@ from mysql.connector import pooling
 from flask_jwt_extended import create_access_token, create_refresh_token
 from flask_jwt_extended import get_jwt_identity, jwt_required
 from flask_jwt_extended import decode_token, JWTManager
-from mySQL import database_connection_pool
-connection_pool = database_connection_pool()
+from mySQL import connection_pool
+# connection_pool = database_connection_pool()
 
 member_system = Blueprint("member_system", __name__, static_folder="static", template_folder="templates")
 

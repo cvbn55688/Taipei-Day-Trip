@@ -1,58 +1,69 @@
 <!-- This file contain the 'member system', 'header', and 'footer'. -->
 <!DOCTYPE html>
 <html lang="zh">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>台北一日遊</title>
-    <link rel="stylesheet" href="/CSS/style.css">
-</head>
+    <link rel="stylesheet" href="/CSS/style.css" />
+    {% block head %}{% endblock %}
+  </head>
 
-<body>
+  <body>
     <div class="full_screen">
-        <div class="member_system">
-            <div class="top_border"></div>
-            <img class="close_img" src="/IMG/icon_close.png" alt="">
-            <div class="member_login">
-                <p>登入會員帳號</p>
-                <form action="">
-                    <input type="email" placeholder="輸入電子信箱" >
-                    <input type="password" placeholder="輸入密碼" >
-                    <button type="button">登入帳戶</button>
-                </form>
-                <p class="option">還沒有帳戶？<span class="signup_button" href="">點此註冊</span></p>
-            </div>
-            <div class="signup">
-                <p>註冊會員帳號</p>
-                <form action="", method="POST">
-                    <input type="text" name="name" placeholder="輸入姓名" >
-                    <input type="email" name="email" placeholder="輸入電子信箱" >
-                    <input type="password" name="password" placeholder="輸入密碼" >
-                    <button type="button">註冊帳戶</button>
-                </form>
-                <p class="option">已經有帳戶？<span class="login_button" href="">點此登入</span></p>
-            </div>
+      <div class="member_system">
+        <div class="top_border"></div>
+        <img class="close_img" src="/IMG/icon_close.png" alt="" />
+        <div class="member_login">
+          <p>登入會員帳號</p>
+          <form action="">
+            <input type="email" placeholder="輸入電子信箱" />
+            <input type="password" placeholder="輸入密碼" />
+            <button type="button">登入帳戶</button>
+          </form>
+          <p class="option">
+            還沒有帳戶？<span class="signup_button" href="">點此註冊</span>
+          </p>
         </div>
+        <div class="signup">
+          <p>註冊會員帳號</p>
+          <form action="" , method="POST">
+            <input type="text" name="name" placeholder="輸入姓名" />
+            <input type="email" name="email" placeholder="輸入電子信箱" />
+            <input type="password" name="password" placeholder="輸入密碼" />
+            <button type="button">註冊帳戶</button>
+          </form>
+          <p class="option">
+            已經有帳戶？<span class="login_button" href="">點此登入</span>
+          </p>
+        </div>
+      </div>
     </div>
     <header>
-        <nav>
-            <a href="/"><p>台北一日遊</p></a>
-            <ul>
-                <li class="member_booking">預定行程</li>
-                <li class="member">登入/註冊</li>
-                <li class="logout">登出系統</li>
-            </ul>
-        </nav>
+      <nav>
+        <a href="/"><p>台北一日遊</p></a>
+        <ul>
+          <li class="member_booking">預定行程</li>
+          <li
+            class="member-center"
+            style="display: None"
+            onclick="alert('此功能尚未開通')"
+          >
+            會員中心
+          </li>
+          <li class="member">登入/註冊</li>
+          <li class="logout">登出系統</li>
+        </ul>
+      </nav>
     </header>
 
-    <main>
-        {% block main %}{% endblock %}
-    </main>
+    <main>{% block main %}{% endblock %}</main>
 
     <footer>
-        <p>COPYRIGHT@2022台北一日遊</p>
+      <p>COPYRIGHT@2022台北一日遊</p>
+      <p>客服專線：(02)22778899</p>
     </footer>
-</body>
-<script src="/JS/member_system.js"></script>
-{% block script %}{% endblock %}
+  </body>
+  <script src="/JS/loginSystem.js"></script>
+  {% block script %}{% endblock %}
 </html>

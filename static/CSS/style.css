@@ -79,22 +79,25 @@ body {
   height: 10px;
   border-top-left-radius: 5px;
   border-top-right-radius: 5px;
-  background: linear-gradient(270deg, #337788 0%, #66AABB 100%);
+  background: linear-gradient(270deg, #337788 0%, #66aabb 100%);
 }
-.full_screen .member_login, .full_screen .signup {
+.full_screen .member_login,
+.full_screen .signup {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 }
-.full_screen .member_login p, .full_screen .signup p {
+.full_screen .member_login p,
+.full_screen .signup p {
   font-weight: 700;
   font-size: 24px;
   line-height: 24px;
   color: #666666;
   padding: 10px;
 }
-.full_screen .member_login form, .full_screen .signup form {
+.full_screen .member_login form,
+.full_screen .signup form {
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -102,22 +105,25 @@ body {
   align-items: center;
   margin-top: 5px;
 }
-.full_screen .member_login form input, .full_screen .signup form input {
+.full_screen .member_login form input,
+.full_screen .signup form input {
   margin-bottom: 10px;
   width: 310px;
   height: 47px;
-  background: #FFFFFF;
-  border: 1px solid #CCCCCC;
+  background: #ffffff;
+  border: 1px solid #cccccc;
   border-radius: 5px;
   padding: 15px;
 }
-.full_screen .member_login form p, .full_screen .signup form p {
+.full_screen .member_login form p,
+.full_screen .signup form p {
   font-weight: 500;
   font-size: 16px;
   line-height: 13px;
   padding-bottom: 0;
 }
-.full_screen .member_login form button, .full_screen .signup form button {
+.full_screen .member_login form button,
+.full_screen .signup form button {
   width: 310px;
   height: 36px;
   background: #448899;
@@ -126,20 +132,23 @@ body {
   font-weight: 400;
   font-size: 19px;
   line-height: 16px;
-  color: #FFFFFF;
+  color: #ffffff;
   cursor: pointer;
 }
-.full_screen .member_login .option, .full_screen .signup .option {
+.full_screen .member_login .option,
+.full_screen .signup .option {
   font-weight: 500;
   font-size: 16px;
   line-height: 13px;
   margin-bottom: 5px;
 }
-.full_screen .member_login .option span, .full_screen .signup .option span {
+.full_screen .member_login .option span,
+.full_screen .signup .option span {
   color: #666666;
   cursor: pointer;
 }
-.full_screen .member_login .option :hover, .full_screen .signup .option :hover {
+.full_screen .member_login .option :hover,
+.full_screen .signup .option :hover {
   color: #002aff;
 }
 .full_screen .signup {
@@ -150,7 +159,7 @@ header {
   position: -webkit-sticky;
   position: sticky;
   top: 0;
-  background-color: #FFFFFF;
+  background-color: #ffffff;
   z-index: 99999;
   border: 1px solid rgba(231, 231, 231, 0.8196078431);
   display: flex;
@@ -211,7 +220,7 @@ main .top .slogan {
   width: 1200px;
 }
 main .top .slogan p {
-  color: #F8F8F8;
+  color: #f8f8f8;
 }
 main .top .slogan .title {
   font-size: 28px;
@@ -261,8 +270,8 @@ main .top .slogan .search_bar .img_box img {
 main .top .slogan .category {
   position: absolute;
   bottom: -95px;
-  background: #FFFFFF;
-  box-shadow: 0px 0px 20px #AABBCC;
+  background: #ffffff;
+  box-shadow: 0px 0px 20px #aabbcc;
   border-radius: 5px;
   z-index: 10;
   width: 400px;
@@ -275,7 +284,7 @@ main .top .slogan .category {
   padding: 4px;
 }
 main .top .slogan .category :hover {
-  background: #E8E8E8;
+  background: #e8e8e8;
   border-radius: 5px;
 }
 main .top .slogan .category div {
@@ -302,7 +311,7 @@ main .mid .card {
   position: relative;
   width: 270px;
   height: 242px;
-  border: 1px solid #E8E8E8;
+  border: 1px solid #e8e8e8;
   border-radius: 5px;
   cursor: pointer;
 }
@@ -321,7 +330,7 @@ main .mid .card .attraction .attraction_name {
   align-items: center;
   width: 100%;
   background-color: rgba(0, 0, 0, 0.6);
-  color: #FFFFFF;
+  color: #ffffff;
   position: absolute;
   text-align: left;
   bottom: 0;
@@ -380,7 +389,7 @@ main .first .picture .dot .dot_child {
   margin: 2px;
   border-radius: 50%;
   background-color: #ffffff;
-  border: 2px solid #FFFFFF;
+  border: 2px solid #ffffff;
 }
 @-webkit-keyframes appear_dot {
   0% {
@@ -554,7 +563,7 @@ main .first .profile .profile_subtitle {
 main .first .profile .booking {
   width: 100%;
   padding: 15px 0 0 0;
-  background: #E8E8E8;
+  background: #e8e8e8;
   border-radius: 5px;
 }
 main .first .profile .booking #p_1 {
@@ -573,20 +582,25 @@ main .first .profile .booking #p_2 {
   line-height: 13px;
   color: #666666;
 }
-main .first .profile .booking .date, main .first .profile .booking .time {
+main .first .profile .booking .date,
+main .first .profile .booking .time {
   margin: 15px 20px 0 20px;
 }
-main .first .profile .booking .date #p_3, main .first .profile .booking .date span, main .first .profile .booking .time #p_3, main .first .profile .booking .time span {
+main .first .profile .booking .date #p_3,
+main .first .profile .booking .date span,
+main .first .profile .booking .time #p_3,
+main .first .profile .booking .time span {
   font-weight: 700;
   font-size: 16px;
   height: 17px;
   line-height: 13px;
   color: #666666;
 }
-main .first .profile .booking .date input, main .first .profile .booking .time input {
+main .first .profile .booking .date input,
+main .first .profile .booking .time input {
   width: 193px;
   height: 35px;
-  background: #FFFFFF;
+  background: #ffffff;
   font-weight: 500;
   font-size: 16px;
   color: #000000;
@@ -644,7 +658,7 @@ main .first .profile .booking button {
   font-weight: 400;
   font-size: 19px;
   line-height: 16px;
-  color: #FFFFFF;
+  color: #ffffff;
   margin: 25px 20px 40px 20px;
   cursor: pointer;
 }
@@ -654,7 +668,7 @@ main .first .profile .booking button:hover {
 main hr {
   width: 1200px;
   border: none;
-  border-top: 2px solid #E8E8E8;
+  border-top: 2px solid #e8e8e8;
   padding: 0px;
   margin: 40px 0;
 }
@@ -750,39 +764,61 @@ main .mid_journey {
   align-items: center;
   width: 980px;
 }
-main .mid_journey .contact_info, main .mid_journey .payment {
+main .mid_journey .contact_info,
+main .mid_journey .payment {
   width: 100%;
   display: flex;
   flex-direction: column;
 }
-main .mid_journey .contact_info .title, main .mid_journey .payment .title {
+main .mid_journey .contact_info .title,
+main .mid_journey .payment .title {
   margin-bottom: 20px;
   color: #666666;
   font-weight: 700;
   font-size: 19px;
   line-height: 16px;
 }
-main .mid_journey .contact_info form, main .mid_journey .payment form {
+main .mid_journey .contact_info form,
+main .mid_journey .payment form {
   display: flex;
   flex-direction: column;
 }
-main .mid_journey .contact_info form span, main .mid_journey .contact_info form p, main .mid_journey .payment form span, main .mid_journey .payment form p {
+main .mid_journey .contact_info form span,
+main .mid_journey .contact_info form p,
+main .mid_journey .payment form span,
+main .mid_journey .payment form p {
   height: 38px;
   margin-bottom: 15px;
   color: #666666;
   font-weight: 500;
   font-size: 16px;
   line-height: 13px;
+  display: flex;
+  align-items: center;
 }
-main .mid_journey .contact_info form span input, main .mid_journey .contact_info form p input, main .mid_journey .payment form span input, main .mid_journey .payment form p input {
+main .mid_journey .contact_info form span input,
+main .mid_journey .contact_info form span .tpfield,
+main .mid_journey .contact_info form p input,
+main .mid_journey .contact_info form p .tpfield,
+main .mid_journey .payment form span input,
+main .mid_journey .payment form span .tpfield,
+main .mid_journey .payment form p input,
+main .mid_journey .payment form p .tpfield {
   width: 200px;
   height: 38px;
-  background: #FFFFFF;
-  border: 1px solid #E8E8E8;
+  background: #ffffff;
+  border: 1px solid #e8e8e8;
   border-radius: 5px;
   padding: 5px;
 }
-main .mid_journey .contact_info form .notice, main .mid_journey .payment form .notice {
+main .mid_journey .contact_info form span .tappay-field-focus,
+main .mid_journey .contact_info form p .tappay-field-focus,
+main .mid_journey .payment form span .tappay-field-focus,
+main .mid_journey .payment form p .tappay-field-focus {
+  border: 2px solid black;
+}
+main .mid_journey .contact_info form .notice,
+main .mid_journey .payment form .notice {
   font-weight: 700;
   margin: 20px 0 0 0;
   height: auto;
@@ -810,12 +846,47 @@ main .mid_journey .confirm button {
   font-weight: 400;
   font-size: 19px;
   line-height: 16px;
-  color: #FFFFFF;
+  color: #ffffff;
   cursor: pointer;
+}
+main .mid_journey .confirm .submit_disabled {
+  opacity: 0.5;
+  cursor: default;
+}
+main .thank {
+  height: 264px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+}
+main .thank p {
+  color: #666666;
+  width: 100%;
+  margin: 10px 0;
+  font-weight: 700;
+  font-size: 19px;
+  line-height: 16px;
+}
+main .thank .have-order {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+}
+main .thank .have-order a {
+  color: #666666;
+}
+main .thank .have-order a:hover {
+  color: #002aff;
+}
+main .thank .no-order {
+  display: None;
 }
 
 footer {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   text-align: center;
@@ -824,10 +895,11 @@ footer {
   width: 100%;
 }
 footer p {
+  margin: 5px;
   font-weight: 700;
   font-size: 16px;
   line-height: 13px;
-  color: #FFFFFF;
+  color: #ffffff;
 }
 
 @media screen and (max-width: 1200px) {
@@ -875,10 +947,12 @@ footer p {
   main .top_journey {
     width: 90%;
   }
-  main .top_journey .journey, main .top_journey .showNoBooking {
+  main .top_journey .journey,
+main .top_journey .showNoBooking {
     width: 90%;
   }
-  main .top_journey .journey hr, main .top_journey .showNoBooking hr {
+  main .top_journey .journey hr,
+main .top_journey .showNoBooking hr {
     width: 95vw;
   }
   main .mid_journey {
@@ -942,29 +1016,35 @@ footer p {
     width: 100%;
     padding: 0 10px;
   }
-  main .top_journey .journey, main .top_journey .showNoBooking {
+  main .top_journey .journey,
+main .top_journey .showNoBooking {
     width: 100%;
   }
-  main .top_journey .journey .journey_card, main .top_journey .showNoBooking .journey_card {
+  main .top_journey .journey .journey_card,
+main .top_journey .showNoBooking .journey_card {
     position: relative;
     display: block;
     padding-bottom: 20px;
   }
-  main .top_journey .journey .journey_card .imges, main .top_journey .showNoBooking .journey_card .imges {
+  main .top_journey .journey .journey_card .imges,
+main .top_journey .showNoBooking .journey_card .imges {
     width: 100%;
     height: auto;
   }
-  main .top_journey .journey .journey_card .delete, main .top_journey .showNoBooking .journey_card .delete {
+  main .top_journey .journey .journey_card .delete,
+main .top_journey .showNoBooking .journey_card .delete {
     position: absolute;
     right: 0;
     bottom: 0;
   }
-  main .top_journey .journey .journey_card .attraction_info, main .top_journey .showNoBooking .journey_card .attraction_info {
+  main .top_journey .journey .journey_card .attraction_info,
+main .top_journey .showNoBooking .journey_card .attraction_info {
     width: 100%;
     height: auto;
     margin: 0;
   }
-  main .top_journey .journey hr, main .top_journey .showNoBooking hr {
+  main .top_journey .journey hr,
+main .top_journey .showNoBooking hr {
     width: 100%;
   }
   main .mid_journey {
