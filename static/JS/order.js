@@ -4,6 +4,7 @@ const attractionList = getBookingInfo();
 const contactNameInput = document.querySelector(".name");
 const contactEmailInput = document.querySelector(".email");
 const contactPhoneInput = document.querySelector(".phone");
+const loadingScreen = document.querySelector(".loading-screen");
 TPDirect.setupSDK(
   126793,
   "app_5CVvEuP2FvOwFoi4KKx2hNx6O71LdE9ta67C4rSXczDk2zXknCmRl6Oe6H3R",
@@ -95,15 +96,17 @@ function onSubmit() {
     alert("電話號碼不符合格式，請輸入電話號碼十碼");
     return;
   }
-
+  loadingScreen.style.display = "flex";
   if (tappayStatus.canGetPrime === false) {
     alert("can not get prime");
+    loadingScreen.style.display = "None";
     return;
   }
 
   TPDirect.card.getPrime((result) => {
     if (result.status !== 0) {
       alert("get prime error " + result.msg);
+      loadingScreen.style.display = "None";
       return;
     }
 
@@ -137,10 +140,12 @@ function onSubmit() {
         .then(function (data) {
           if (data.error) {
             alert(data.message);
+            loadingScreen.style.display = "None";
           } else {
             data = data.data;
             number = data.number;
             alert(data.payment.message);
+            loadingScreen.style.display = "None";
             if (data.payment.status == 0) {
               document.location.href = `/thankyou?number=${number}`;
             }
