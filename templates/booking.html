@@ -1,44 +1,66 @@
-{% extends "base.html" %}
-{% block main %}
+{% extends "base.html" %} {% block main %}
 <section class="top_journey">
-    <p class="user_journey">您好，<span>ZH</span>，待預定的行程如下：</p>
-    <div class="journey"></div>
+  <p class="user_journey">您好，<span>ZH</span>，待預定的行程如下：</p>
+  <div class="journey"></div>
 </section>
-
 
 <section class="mid_journey">
-    <div class="contact_info">
-        <p class="title">您的聯絡資訊</p>
-        <form action="">
-            <span>聯絡姓名：<input></input></span>
-            <span>聯絡信箱：<input></input></span>
-            <span>手機號碼：<input></input></span>
-            <p class="notice">請保持手機暢通，準時到達，導覽人員將用手機與您聯繫，務必留下正確的聯絡方式。
-            </p>
-        </form>
-    </div>
+  <div class="contact_info">
+    <p class="title">您的聯絡資訊</p>
+    <form action="">
+      <span>聯絡姓名：<input class="name" type="text" /></span>
+      <span>聯絡信箱：<input class="email" type="email" /></span>
+      <span>手機號碼：<input class="phone" type="tel" /></span>
+      <p class="notice">
+        請保持手機暢通，準時到達，導覽人員將用手機與您聯繫，務必留下正確的聯絡方式。
+      </p>
+    </form>
+  </div>
 
-    <hr>
+  <hr />
 
-    <div class="payment">
-        <p class="title">信用卡資訊</p>
-        <form action="">
-            <span>卡片號碼：<input type="tel" pattern="[0-9\s]{13,19}" autocomplete="cc-number" maxlength="16" placeholder="xxxx xxxx xxxx xxxx"></input></span>
+  <div class="payment">
+    <p class="title">信用卡資訊</p>
+    <form action="">
+      <!-- <span>卡片號碼：<input id="cc-number" class="input error" type="tel" autocomplete="cc-number" autocorrect="off" spellcheck="false" name="cc-number" aria-label="Credit or debit card number" placeholder="**** **** **** ****" aria-placeholder="**** **** **** ****" aria-invalid="false"></input></span>
             <span>過期時間：<input placeholder="MM/YY"></input></span>
-            <span>驗證密碼：<input placeholder="CVV"></input></span>
-        </form>
-    </div>
+            <span>驗證密碼：<input placeholder="CVV"></input></span> -->
+      <span
+        >卡片號碼：
+        <div class="tpfield" id="card-number"></div
+      ></span>
+      <span
+        >過期時間：
+        <div class="tpfield" id="card-expiration-date"></div
+      ></span>
+      <span
+        >驗證密碼：
+        <div class="tpfield" id="card-ccv"></div
+      ></span>
+    </form>
+  </div>
 
-    <hr>
+  <hr />
 
-    <div class="confirm">
-        <p>總價：新台幣<span class="sum">0</span>元</p>
-        <button type="button">確認訂購並付款</button>
-    </div>
+  <div class="confirm">
+    <p>總價：新台幣<span class="sum">0</span>元</p>
+    <button type="button" class="submit_disabled">確認訂購並付款</button>
+  </div>
 </section>
 
-{% endblock %}
+<div class="loading-screen">
+  <div class="sk-chase">
+    <div class="sk-chase-dot"></div>
+    <div class="sk-chase-dot"></div>
+    <div class="sk-chase-dot"></div>
+    <div class="sk-chase-dot"></div>
+    <div class="sk-chase-dot"></div>
+    <div class="sk-chase-dot"></div>
+  </div>
+</div>
 
-{% block script %}
-<script src="/JS/booking_system.js"></script>
+{% endblock %} {% block script %}
+<script src="/JS/bookingSystem.js"></script>
+<script src="https://js.tappaysdk.com/sdk/tpdirect/v5.14.0"></script>
+<script src="/JS/order.js"></script>
 {% endblock %}

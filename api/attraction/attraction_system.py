@@ -1,7 +1,7 @@
 from flask import *
 from mysql.connector import pooling
-from mySQL import database_connection_pool
-connection_pool = database_connection_pool()
+from mySQL import connection_pool
+# connection_pool = database_connection_pool()
 
 attraction_system = Blueprint("attraction_system", __name__, static_folder="static", template_folder="templates")
 

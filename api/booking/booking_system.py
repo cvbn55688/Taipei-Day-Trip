@@ -1,8 +1,8 @@
 from flask import *
 from mysql.connector import pooling
 from flask_jwt_extended import decode_token
-from mySQL import database_connection_pool
-connection_pool = database_connection_pool()
+from mySQL import connection_pool
+# connection_pool = connection_pool
 
 booking_system = Blueprint("booking_system", __name__, static_folder="static", template_folder="templates")
                                             
@@ -11,10 +11,10 @@ def booking():
     if request.method == "POST":
         user_data = request.cookies.get('access_token')
         request_booking_info = request.get_json()
-        try:
-            connection = connection_pool.get_connection()
-            cursor = connection.cursor()
-            if user_data != None:
+        if user_data != None:
+            try:
+                connection = connection_pool.get_connection()
+                cursor = connection.cursor()
                 user_data = decode_token(user_data)["sub"]
                 user_id = user_data["user_id"]
                 user_name = user_data["user_name"]
@@ -28,21 +28,20 @@ def booking():
                 cursor.execute(sql, (attractionId, user_id, date, time, price))
                 connection.commit()
                 return {"ok" : True}, 200
-            else:
-                return {"error": True,"message": "使用者尚未登入"}, 403
-                
-        except Exception as e:
-            return {"error": True, "message": e}, 500
 
-        finally:
-            cursor.close()
-            connection.close()
+            except Exception as e:
+                return {"error": True, "message": e}, 500
+
+            finally:
+                cursor.close()
+                connection.close()
+        else:
+            return {"error": True,"message": "使用者尚未登入"}, 403
 
     if request.method == "GET":
         user_data = request.cookies.get('access_token')
         if user_data != None:
             try:
-                print(connection_pool)
                 connection = connection_pool.get_connection()
                 cursor = connection.cursor()
                 user_data = decode_token(user_data)["sub"]
