@@ -28,6 +28,12 @@ main {
     margin: 20px 0;
   }
   .show-orders {
+    .showNoOrder {
+      color: #757575;
+      font-size: 25px;
+      font-weight: 700;
+      margin-bottom: 30px;
+    }
     display: flex;
     flex-direction: column;
     justify-content: center;

@@ -33,6 +33,12 @@ main .show-orders {
   width: 980px;
   padding: 20px;
 }
+main .show-orders .showNoOrder {
+  color: #757575;
+  font-size: 25px;
+  font-weight: 700;
+  margin-bottom: 30px;
+}
 main .show-orders .order-card {
   border: 1px solid rgba(182, 182, 182, 0.3294117647);
   position: relative;
