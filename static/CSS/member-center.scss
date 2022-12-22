@@ -9,33 +9,47 @@
 }
 
 main {
-  height: 900px;
+  // height: 900px;
   section {
-    width: 1200px;
+    width: 1000px;
     ul {
       display: flex;
-      margin: 10px 0;
       li {
         margin: 5px 20px;
         cursor: pointer;
         color: #757575;
         font-weight: 700;
-        font-size: 19px;
+        font-size: 25px;
         line-height: 16px;
       }
     }
   }
+  .member-cneter-header {
+    margin: 20px 0;
+  }
   .show-orders {
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
+    width: 980px;
+    padding: 20px;
     // border: 1px red solid;
-    .card {
+    .order-card {
+      border: 1px solid #b6b6b654;
+      position: relative;
+      width: 100%;
+      margin: 20px;
+      padding: 0 0 40px 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
       .title {
-        width: 1000px;
+        user-select: none;
+        width: 100%;
         display: flex;
         align-items: center;
-        border: 1px solid #b6b6b634;
         p {
           display: flex;
           align-items: center;
@@ -44,18 +58,113 @@ main {
           font-size: 19px;
           line-height: 16px;
           height: 50px;
-          padding: 10px;
+          padding: 0 10px;
+          margin-right: 10px;
+          width: 260px;
         }
         img {
           width: 20px;
+          transform: rotate(90deg);
+          // padding-left: 20px;
+          position: relative;
         }
       }
-      :hover {
+      .title:hover {
         background-color: #b6b6b6;
       }
-      img {
-        width: 250px;
+      .trips-order {
+        display: flex;
+        position: relative;
+        top: 0;
+        margin-top: 20px;
+        padding: 0 20px 0 20px;
+        img {
+          width: 250px;
+          height: auto;
+        }
+        .order-info,
+        .contact-info {
+          width: 200px;
+          margin: 0 50px;
+          .attraction_title,
+          .contact_title {
+            // width: 200px;
+            display: inline-block;
+            padding: 5px 0;
+            margin-bottom: 25px;
+            color: #448899;
+            font-weight: 700;
+            font-size: 16px;
+            line-height: 18px;
+          }
+          .contact_title {
+            color: #448899;
+          }
+          p {
+            margin-bottom: 15px;
+            font-weight: 500;
+            font-size: 16px;
+            // line-height: 13px;
+            color: #666666;
+          }
+        }
+      }
+      hr {
+        display: block;
+        width: 95%;
       }
     }
+  }
+}
+
+@media screen and (max-width: 1000px) {
+  main {
+    // height: 900px;
+    section {
+      width: 100%;
+    }
+    .show-orders {
+      width: 100%;
+      .order-card {
+        width: 100%;
+        .trips-order {
+          flex-direction: column;
+          width: 100%;
+          .order-info {
+            width: 100%;
+          }
+          img {
+            width: 100%;
+            height: auto;
+          }
+          .order-info,
+          .contact-info {
+            margin: 20px 10px;
+          }
+        }
+      }
+    }
+  }
+}
+
+@keyframes show {
+  0% {
+    top: 0;
+    opacity: 0;
+  }
+  100% {
+    top: 100%;
+    opacity: 1;
+  }
+}
+
+@keyframes hide {
+  0% {
+    top: 100%;
+    opacity: 1;
+  }
+  100% {
+    top: 0;
+    opacity: 0;
   }
 }

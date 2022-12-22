@@ -7,15 +7,14 @@ function getAttraction() {
       return response.json();
     })
     .then(function (data) {
-      data = data["data"];
-      attractionName = data["name"];
-      category = data["category"].replace(/\s+/g, "");
-      mrt = data["mrt"];
-      description = data["description"];
-      address = data["address"];
-      transport = data["transport"];
-      imgs = data["images"];
-
+      data = data.data;
+      attractionName = data.name;
+      category = data.category.replace(/\s+/g, "");
+      mrt = data.mrt;
+      description = data.description;
+      address = data.address;
+      transport = data.transport;
+      imgs = data.images;
       document.title = attractionName;
       const img_div = document.querySelector(".imges");
       imgs.forEach((img) => {

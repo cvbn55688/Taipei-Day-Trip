@@ -44,18 +44,19 @@
         <a href="/"><p>台北一日遊</p></a>
         <ul>
           <li class="member_booking">預定行程</li>
-          <li
-            class="member-center"
-            style="display: None"
-            onclick="alert('此功能尚未開通')"
-          >
-            會員中心
-          </li>
+          <li class="member-center">歷史訂單</li>
           <li class="member">登入/註冊</li>
           <li class="logout">登出系統</li>
+          <li class="hamburger"><img src="/IMG/menu.png" alt="" /></li>
         </ul>
       </nav>
     </header>
+    <div class="navbar">
+      <li class="hamburger-member-booking">預定行程</li>
+      <li class="hamburger-member-center">歷史訂單</li>
+      <li class="hamburger-login">登入/註冊</li>
+      <li class="hamburger-logout">登出系統</li>
+    </div>
 
     <main>{% block main %}{% endblock %}</main>
 

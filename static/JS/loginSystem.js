@@ -12,11 +12,23 @@ const signupButton = document.querySelector(".signup_button");
 const loginButton = document.querySelector(".login_button");
 const bookingButton = document.querySelector(".member_booking");
 const memberCenterButton = document.querySelector(".member-center");
+const hamburgerButton = document.querySelector(".hamburger");
+const humburgerNavbar = document.querySelector(".navbar");
+const humburgerBookingButton = document.querySelector(
+  ".hamburger-member-booking"
+);
+const humburgerHistoryButton = document.querySelector(
+  ".hamburger-member-center"
+);
+const humburgerLoginButton = document.querySelector(".hamburger-login");
+const humburgerLogoutButton = document.querySelector(".hamburger-logout");
+console.log(humburgerLoginButton, humburgerLogoutButton);
 const emailRegex =
   /^([a-zA-Z0-9_\.\-\+])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
 const numberRegex = /^\d{10}$/;
 
 memberButton.addEventListener("click", showBlackScreen);
+humburgerLoginButton.addEventListener("click", showBlackScreen);
 function showBlackScreen() {
   loginPage.style.display = "flex";
   loginPage.style.animation = "show_member_system 0.5s forwards";
@@ -87,13 +99,13 @@ function singup() {
         return response.json();
       })
       .then(function (data) {
-        if (data["ok"] == true) {
+        if (data.ok == true) {
           singMessage.textContent = "註冊成功";
           singMessage.style.color = "green";
           userDataForm.appendChild(singMessage);
           eraseMessage(userDataForm);
         } else {
-          singMessage.textContent = data["message"];
+          singMessage.textContent = data.message;
           singMessage.style.color = "red";
           userDataForm.appendChild(singMessage);
           eraseMessage(userDataForm);
@@ -132,11 +144,11 @@ function login() {
         return response.json();
       })
       .then(function (data) {
-        if (data["ok"]) {
+        if (data.ok) {
           alert("登入成功");
           document.location.href = location.href;
         } else {
-          singMessage.textContent = data["message"];
+          singMessage.textContent = data.message;
           singMessage.style.color = "red";
           userDataForm.appendChild(singMessage);
           eraseMessage(userDataForm);
@@ -153,12 +165,15 @@ function checkLoginState() {
       return response.json();
     })
     .then(function (data) {
-      data = data["data"];
+      data = data.data;
       if (data != null) {
-        user_id = data["id"];
-        user_name = data["name"];
+        user_id = data.id;
+        user_name = data.name;
         memberButton.style.display = "None";
         logoutButton.style.display = "block";
+        humburgerLoginButton.style.display = "None";
+        humburgerLogoutButton.style.display = "flex";
+
         return user_name;
       } else if (document.cookie != "") {
         let refresh_token = document.cookie.split("=")[1].split(";")[0];
@@ -172,7 +187,7 @@ function checkLoginState() {
             return response.json();
           })
           .then(function (data) {
-            if (data["ok"]) {
+            if (data.ok) {
               document.location.href = location.href;
             } else {
               logout("expired");
@@ -205,6 +220,9 @@ function logout(logout_event) {
 logoutButton.addEventListener("click", () => {
   logout("userLogout");
 });
+humburgerLogoutButton.addEventListener("click", () => {
+  logout("userLogout");
+});
 
 function logInRequest(button, cb) {
   button.addEventListener("click", () => {
@@ -223,5 +241,23 @@ logInRequest(bookingButton, () => {
   document.location.href = "/booking";
 });
 logInRequest(memberCenterButton, () => {
-  document.location.href = "/";
+  document.location.href = "/history_order";
+});
+logInRequest(humburgerBookingButton, () => {
+  document.location.href = "/booking";
+});
+logInRequest(humburgerHistoryButton, () => {
+  document.location.href = "/history_order";
+});
+
+count = 0;
+hamburgerButton.addEventListener("click", () => {
+  if (count % 2 == 0) {
+    humburgerNavbar.style.display = "flex";
+    count++;
+  } else {
+    humburgerNavbar.style.display = "None";
+    count--;
+  }
+  console.log(count);
 });

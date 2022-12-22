@@ -58,7 +58,7 @@ function getBookingInfo() {
           newCard.setAttribute("id", bookingId);
           journeyBox.appendChild(newCard);
 
-          newImg = document.createElement("img");
+          let newImg = document.createElement("img");
           newImg.classList.add("imges");
           newImg.src = attractionImg;
           newCard.appendChild(newImg);
@@ -67,13 +67,10 @@ function getBookingInfo() {
           newAttractionInfo.classList.add("attraction_info");
           newCard.appendChild(newAttractionInfo);
 
-          let newAttractionTitle = document.createElement("p");
+          let newAttractionTitle = document.createElement("a");
           newAttractionTitle.classList.add("attraction_title");
-          newAttractionTitle.textContent = "台北一日遊：";
-          let newAttractionName = document.createElement("a");
-          newAttractionName.classList.add("attraction_name");
-          newAttractionName.textContent = attractionName;
-          newAttractionTitle.appendChild(newAttractionName);
+          newAttractionTitle.href = `/attraction/${element.attraction.id}`;
+          newAttractionTitle.textContent = "台北一日遊：" + attractionName;
           newAttractionInfo.appendChild(newAttractionTitle);
 
           let newDate = document.createElement("p");
@@ -121,7 +118,7 @@ function getBookingInfo() {
       deleteBooking();
       let sumDiv = document.querySelector(".sum");
       sumDiv.textContent = totalPrice;
-      return attractionList;
+      return data;
     });
 }
 // getBookingInfo();
