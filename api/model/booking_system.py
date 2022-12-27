@@ -130,7 +130,9 @@ class Order:
             cursor = connection.cursor(dictionary=True)
             sql = """select number, user_id, contact, group_concat('{"price":"', price ,'","attraction_id":"', orders.attraction_id , '","attraction_name":"', attraction.name , '","address":"', attraction.address,  '","images":"', SUBSTRING_INDEX(image.images,',',1) , '","date":"', date , '","time":"', time ,'"}'  SEPARATOR ";") as 'grouping' from orders inner join image on orders.attraction_id = image.attraction_id inner join attraction on attraction.id = orders.attraction_id where user_id = %s group by number;"""
             cursor.execute(sql, (user_id,))
+            
             records = cursor.fetchall()
+            print(records)
             trip_list = []
             for order in records:
                 number = order["number"]

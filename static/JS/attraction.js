@@ -200,3 +200,17 @@ bookingSubmit.addEventListener("click", () => {
       });
   }
 });
+
+const dateImput = document.querySelector("#Date");
+dateImput.addEventListener("click", () => {
+  let date_now = new Date();
+  let year = date_now.getFullYear();
+  let month =
+    date_now.getMonth() + 1 < 10
+      ? "0" + (date_now.getMonth() + 1)
+      : date_now.getMonth() + 1;
+  let date =
+    date_now.getDate() < 10 ? "0" + date_now.getDate() : date_now.getDate();
+  console.log(date);
+  dateImput.setAttribute("min", year + "-" + month + "-" + date);
+});

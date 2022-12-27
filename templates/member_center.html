@@ -1,23 +1,74 @@
 {% extends "base.html" %} {% block head %}
 <link rel="stylesheet" href="/CSS/member-center.css" />
 {% endblock %} {% block main %}
-<section class="member-cneter-header">
-  <ul>
-    <li class="already-order">訂單及旅程</li>
-  </ul>
-</section>
 
-<section class="show-orders">
-  <div class="card">
-    <div class="title">
-      <p>訂單編號：<span class="number">20221219154457</span></p>
-      <img src="/IMG/2203515_media_music_play_triangle_icon.png" alt="" />
+<section class="member-info">
+  <div class="member-title">
+    <div>
+      <p>個人資訊</p>
     </div>
-    <div class="trips"></div>
+    <div class="head-img">
+      <label class="img-input-label"
+        ><input
+          id="head-img-input"
+          name="userIMG"
+          type="file"
+          accept="image/jpeg, image/png"
+        />
+        <img id="head-img" src="/IMG/headIMG_load.gif" alt="" />
+        <div class="img-instruct">
+          <!-- <img class="camara-icon" src="/IMG/camara_icon.png" alt="" /> -->
+          上傳圖片
+        </div>
+      </label>
+    </div>
+  </div>
+  <hr />
+  <div class="member-info-row">
+    <div class="merge">
+      <p>姓名</p>
+      <p class="user-name"></p>
+      <input
+        class="user-name-input"
+        style="display: None"
+        type="text"
+        value=""
+      />
+    </div>
+    <p class="edit" id="e1">編輯</p>
+  </div>
+  <hr />
+  <div class="member-info-row">
+    <div class="merge">
+      <p>電子信箱</p>
+      <p class="user-email"></p>
+      <input
+        class="user-email-input"
+        style="display: None"
+        type="text"
+        value=""
+        placeholder="信箱更改後，登入請用新信箱"
+      />
+    </div>
+    <p class="edit" id="e2">編輯</p>
+  </div>
+  <hr />
+  <div class="member-info-row">
+    <div class="merge">
+      <p>電話號碼</p>
+      <p class="user-phone"></p>
+      <input
+        class="user-phone-input"
+        style="display: None"
+        type="text"
+        value=""
+      />
+    </div>
+
+    <p class="edit" id="e3">編輯</p>
   </div>
 </section>
 
-<section></section>
 {% endblock %} {% block script %}
 <script src="/JS/memberCenter.js"></script>
 {% endblock %}

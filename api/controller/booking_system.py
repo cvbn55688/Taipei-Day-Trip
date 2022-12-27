@@ -5,6 +5,9 @@ from model.booking_system import Order
 import requests
 import datetime
 import json
+import os 
+from dotenv import load_dotenv
+load_dotenv()
 
 booking_system = Blueprint("booking_system", __name__, static_folder="static", template_folder="templates")
 
@@ -13,8 +16,18 @@ def booking():
     booking = Booking()
     if request.method == "POST":
         user_data = request.cookies.get('access_token')
-        booking_info = request.get_json()
         if user_data != None:
+            booking_info = request.get_json()
+            date = booking_info["date"]
+            tonow = datetime.datetime.now()
+            now_year = str(tonow.year)
+            now_month = str(tonow.month)
+            now_day = str(tonow.day)
+            user_year = date[0:4]
+            user_month = date[5:7]
+            user_day = date[8:10]
+            if (user_year<now_year) or (user_year==now_year and user_month<now_month) or (user_year==now_year and user_month==now_month and user_day<now_day):
+                return {"error": True,"message": "輸入錯誤日期"}, 400
             user_data = decode_token(user_data)["sub"]
             return booking.add_booking(user_data, booking_info)
         else:
@@ -53,7 +66,7 @@ def orders():
         prime = request_orderdata["prime"]
         amount = request_orderdata["order"]["price"]
         trips = request_orderdata["order"]["trips"]
-        partner_key = "partner_h746F7knRWACHKImcpxN31IqNKyEkD3T3pzepshWpXJy0r6yPD1kfYT5"
+        partner_key = os.getenv("partner_key")
         url = "https://sandbox.tappaysdk.com/tpc/payment/pay-by-prime"
 
         data = {
@@ -92,6 +105,7 @@ def orders():
                 date = i["date"]
                 time = i["time"]
                 insert_list.append((number, price, attraction_id, json.dumps(contact, ensure_ascii=False), user_id, date, time))
+                
             order_status, order_mess = order.order_pay(user_id, insert_list)
             if order_status == True:
                 data = {"data" : {

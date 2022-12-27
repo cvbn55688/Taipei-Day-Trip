@@ -1,7 +1,6 @@
 from flask import *
 from mysql.connector import pooling
 
-
 connection_pool = pooling.MySQLConnectionPool(
                                             host = 'localhost',
                                             port= "3306",

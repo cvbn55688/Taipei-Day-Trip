@@ -11,14 +11,18 @@ const signupSubmit = document.querySelector(".signup button");
 const signupButton = document.querySelector(".signup_button");
 const loginButton = document.querySelector(".login_button");
 const bookingButton = document.querySelector(".member_booking");
-const memberCenterButton = document.querySelector(".member-center");
+const memberHistoricalOrders = document.querySelector(".historical-orders");
+const memberCenterBottun = document.querySelector(".member-center");
 const hamburgerButton = document.querySelector(".hamburger");
 const humburgerNavbar = document.querySelector(".navbar");
+const hamburgerMemberCenterBottun = document.querySelector(
+  ".hamburger-member-center"
+);
 const humburgerBookingButton = document.querySelector(
   ".hamburger-member-booking"
 );
 const humburgerHistoryButton = document.querySelector(
-  ".hamburger-member-center"
+  ".hamburger-historical-orders"
 );
 const humburgerLoginButton = document.querySelector(".hamburger-login");
 const humburgerLogoutButton = document.querySelector(".hamburger-logout");
@@ -240,7 +244,7 @@ function logInRequest(button, cb) {
 logInRequest(bookingButton, () => {
   document.location.href = "/booking";
 });
-logInRequest(memberCenterButton, () => {
+logInRequest(memberHistoricalOrders, () => {
   document.location.href = "/history_order";
 });
 logInRequest(humburgerBookingButton, () => {
@@ -248,6 +252,12 @@ logInRequest(humburgerBookingButton, () => {
 });
 logInRequest(humburgerHistoryButton, () => {
   document.location.href = "/history_order";
+});
+logInRequest(memberCenterBottun, () => {
+  document.location.href = "/member";
+});
+logInRequest(hamburgerMemberCenterBottun, () => {
+  document.location.href = "/member";
 });
 
 count = 0;

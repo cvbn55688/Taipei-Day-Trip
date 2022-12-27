@@ -8,6 +8,129 @@
   list-style-type: none;
 }
 
+main {
+  min-height: calc(93vh - 104px);
+}
+main .member-info {
+  width: 1200px;
+  margin: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+main .member-info .member-title {
+  width: 90%;
+  height: 130px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+}
+main .member-info .member-title p {
+  color: #666666;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 16px;
+}
+main .member-info .member-title .member-name {
+  padding-top: 5px;
+}
+main .member-info .member-title .head-img {
+  position: relative;
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  border: 1px solid #757575;
+  padding: 1px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+main .member-info .member-title .head-img .img-input-label {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+main .member-info .member-title .head-img .img-input-label input {
+  display: None;
+}
+main .member-info .member-title .head-img .img-input-label img {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  cursor: pointer;
+}
+main .member-info .member-title .head-img .img-input-label .img-instruct {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 90%;
+  height: 20px;
+  position: absolute;
+  bottom: -25px;
+  font-size: 12px;
+  background-color: #cfcfcf;
+  border-radius: 5%;
+  cursor: pointer;
+}
+main .member-info hr {
+  margin: 0;
+  width: 90%;
+}
+main .member-info .member-info-row {
+  padding: 10px;
+  width: 90%;
+  height: 110px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+main .member-info .member-info-row .merge {
+  width: 65%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+main .member-info .member-info-row .merge p {
+  width: 220px;
+  color: #757575;
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 20px;
+  text-align: left;
+}
+main .member-info .member-info-row .merge input {
+  width: 220px;
+  height: 30px;
+  background: #ffffff;
+  border: 1px solid #cccccc;
+  border-radius: 5px;
+  padding: 15px;
+}
+main .member-info .member-info-row .merge ::-moz-placeholder {
+  color: red;
+}
+main .member-info .member-info-row .merge :-ms-input-placeholder {
+  color: red;
+}
+main .member-info .member-info-row .merge ::placeholder {
+  color: red;
+}
+main .member-info .member-info-row .edit {
+  width: 40px;
+  color: #757575;
+  font-weight: 700;
+  font-size: 20px;
+  text-align: right;
+  cursor: pointer;
+}
+main .member-info .member-info-row .edit:hover {
+  color: #448899;
+}
 main section {
   width: 1000px;
 }
@@ -23,7 +146,11 @@ main section ul li {
   line-height: 16px;
 }
 main .member-cneter-header {
-  margin: 20px 0;
+  margin: 40px 0 0 0;
+}
+main .member-cneter-header .already-order {
+  cursor: default;
+  margin: 0 10px;
 }
 main .show-orders {
   display: flex;
@@ -123,8 +250,10 @@ main .show-orders .order-card hr {
   width: 95%;
 }
 
-@media screen and (max-width: 1000px) {
-  main section {
+@media screen and (max-width: 1200px) {
+  main .member-info,
+main section {
+    margin: 0;
     width: 100%;
   }
   main .show-orders {
@@ -147,6 +276,14 @@ main .show-orders .order-card hr {
   main .show-orders .order-card .trips-order .order-info,
 main .show-orders .order-card .trips-order .contact-info {
     margin: 20px 10px;
+  }
+}
+@media screen and (max-width: 600px) {
+  main .member-info .member-info-row .merge {
+    display: block;
+  }
+  main .member-info .member-info-row .merge p {
+    margin: 25px 0;
   }
 }
 @-webkit-keyframes show {

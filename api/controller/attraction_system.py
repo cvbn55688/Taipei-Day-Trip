@@ -1,5 +1,8 @@
 from flask import *
 from model.attraction_system import Attraction
+import os
+from dotenv import load_dotenv
+load_dotenv()
 
 attraction_system = Blueprint("attraction_system", __name__, static_folder="static", template_folder="templates")
 
@@ -17,6 +20,8 @@ def attractionID(attractionId):
 def attractions():
     attraction = Attraction()
     try:
+        print(os.getenv("mySQL"))
+
         page = request.args.get("page")
         keyword = request.args.get("keyword")
         if keyword == None:

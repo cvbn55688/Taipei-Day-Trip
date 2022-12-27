@@ -1,5 +1,6 @@
 const alreadyOrderBottun = document.querySelector(".already-order");
 const showOrders = document.querySelector(".show-orders");
+const main = document.querySelector("main");
 const footer = document.querySelector("footer");
 function getOrders() {
   return fetch(`/api/order/user`)
@@ -144,7 +145,8 @@ function getOrders() {
         noOrder.classList.add("showNoOrder");
         noOrder.textContent = "目前沒有任何訂單";
         showOrders.appendChild(noOrder);
-        footer.style.height = "calc(100vh - 226px)";
+        main.style.minHeight = "auto";
+        footer.style.height = "calc(100vh - 216px)";
         footer.style.justifyContent = "start";
         footer.style.paddingTop = "45px";
       }
