@@ -74,9 +74,26 @@ TPDirect.card.onUpdate(function (update) {
     submitButton.removeEventListener("click", onSubmit);
   }
 
-  // cardTypes = ['mastercard', 'visa', 'jcb', 'amex', 'unknown']
-  if (update.cardType === "visa") {
-    // Handle card type visa.
+  if (update.status.number === 2) {
+    // setNumberFormGroupToError()
+  } else if (update.status.number === 0) {
+    // setNumberFormGroupToSuccess()
+  }
+
+  if (update.status.expiry === 2) {
+    // setNumberFormGroupToError()
+  } else if (update.status.expiry === 0) {
+    // setNumberFormGroupToSuccess()
+  } else {
+    // setNumberFormGroupToNormal()
+  }
+
+  if (update.status.ccv === 2) {
+    // setNumberFormGroupToError()
+  } else if (update.status.ccv === 0) {
+    // setNumberFormGroupToSuccess()
+  } else {
+    // setNumberFormGroupToNormal()
   }
 });
 

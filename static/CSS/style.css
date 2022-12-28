@@ -194,7 +194,36 @@ header nav ul li {
 header nav ul li a {
   color: #666666;
 }
+header nav ul .hamburger {
+  display: None;
+  width: 30px;
+  height: 30px;
+}
 header nav ul .logout {
+  display: None;
+}
+
+.navbar {
+  display: None;
+  flex-direction: column;
+  align-items: center;
+  position: fixed;
+  width: 120px;
+  top: 60px;
+  right: 5px;
+  z-index: 60;
+  background-color: #ffffff;
+  box-shadow: 0px 0px 20px #aabbcc;
+  border-radius: 5px;
+  padding: 10px;
+}
+.navbar li {
+  margin: 5px;
+  list-style-type: none;
+  cursor: pointer;
+  font-size: 18px;
+}
+.navbar .hamburger-logout {
   display: None;
 }
 
@@ -740,6 +769,7 @@ main .journey_card .attraction_info {
   height: 170px;
 }
 main .journey_card .attraction_info .attraction_title {
+  display: inline-block;
   padding: 5px 0;
   margin-bottom: 25px;
   color: #448899;
@@ -966,6 +996,12 @@ main .top_journey .showNoBooking hr {
   }
 }
 @media screen and (max-width: 600px) {
+  header nav ul li {
+    display: None !important;
+  }
+  header nav ul .hamburger {
+    display: flex !important;
+  }
   main .top .slogan {
     padding: 10px;
   }

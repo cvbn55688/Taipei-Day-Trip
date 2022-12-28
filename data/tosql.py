@@ -14,7 +14,7 @@ connection_pool = pooling.MySQLConnectionPool(
                                             port= "3306",
                                             user = 'root',
                                             password = 'zxc55332',
-                                            database = 'website',
+                                            database = 'website3',
                                             pool_name="my_pool",
                                             pool_size = 5,
                                             charset="utf8"
@@ -35,7 +35,7 @@ try:
             a = ("https" + j)
             if a[-4::] == ".JPG" or a[-4::] == ".jpg" or a[-4::] == ".png" or a[-4::] == ".PNG":
                 img_total += a + ","
-
+        # print(img_total)
         del i["file"]
         del i["MEMO_TIME"]
         del i["POI"]
@@ -51,12 +51,16 @@ try:
 
         i["id"] = i.pop("_id")
         i["lat"] = i.pop("latitude")
-        i["lng"] = i.pop("longitude")
+        i["lon"] = i.pop("longitude")
         i["category"] = i.pop("CAT")
         i["mrt"] = i.pop("MRT")
         i["transport"] = i.pop("direction")
 
         other_info = json.dumps(i, ensure_ascii=False)
+
+        sql = "insert image(attraction_id, images) values(%s, %s)"
+        cursor.execute(sql, (i["id"], img_total))
+        connection.commit()
 
         if category == "歷史建築":
             cat_id = 1
@@ -64,7 +68,7 @@ try:
             cat_id = 2
         elif category == "養生溫泉":
             cat_id = 3
-        elif category == "單車旅遊":
+        elif category == "單車遊蹤":
             cat_id = 4
         elif category == "藍色公路":
             cat_id = 5
@@ -76,13 +80,15 @@ try:
             cat_id = 8
         elif category == "親子共遊":
             cat_id = 9
-
-
-        sql = "insert descrition(attraction_id, img, other_info) values(%s, %s, %s)"
-        cursor.execute(sql, (id, img_total, other_info.encode("utf8")))
-        sql2 = "insert attraction(name, cat_id) values(%s, %s)"
-        cursor.execute(sql2, (name, cat_id))
-        connection.commit()
+        # print(i["id"], name, cat_id, i["description"], i["address"], i["transport"], i["mrt"], i["lat"], i["lon"])
+        # print(i["description"])
+        # sql = "insert attraction(id, name, cat_id, description, address, transport, mrt, lat, lon) values(%s, %s, %s, %s, %s, %s, %s, %s, %s)"
+        # cursor.execute(sql, (i["id"], name, cat_id, i["description"], i["address"], i["transport"], i["mrt"], i["lat"], i["lon"]))
+        # sql = "insert descrition(attraction_id, img, other_info) values(%s, %s, %s)"
+        # cursor.execute(sql, (id, img_total, other_info.encode("utf8")))
+        # sql2 = "insert attraction(name, cat_id) values(%s, %s)"
+        # cursor.execute(sql2, (name, cat_id))
+        # connection.commit()
 finally:
     cursor.close()
     connection.close()

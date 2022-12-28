@@ -164,10 +164,40 @@ header {
           color: #666666;
         }
       }
+      .hamburger {
+        display: None;
+        width: 30px;
+        height: 30px;
+      }
       .logout {
         display: None;
       }
     }
+  }
+}
+.navbar {
+  display: None;
+  flex-direction: column;
+  align-items: center;
+  position: fixed;
+  width: 120px;
+  top: 60px;
+  right: 5px;
+  z-index: 60;
+  // left: 100%;
+  // top: 90px;
+  background-color: #ffffff;
+  box-shadow: 0px 0px 20px #aabbcc;
+  border-radius: 5px;
+  padding: 10px;
+  li {
+    margin: 5px;
+    list-style-type: none;
+    cursor: pointer;
+    font-size: 18px;
+  }
+  .hamburger-logout {
+    display: None;
   }
 }
 
@@ -658,6 +688,7 @@ main {
       width: 700px;
       height: 170px;
       .attraction_title {
+        display: inline-block;
         padding: 5px 0;
         margin-bottom: 25px;
         color: #448899;
@@ -891,6 +922,18 @@ footer {
 }
 
 @media screen and (max-width: 600px) {
+  header {
+    nav {
+      ul {
+        li {
+          display: None !important;
+        }
+        .hamburger {
+          display: flex !important;
+        }
+      }
+    }
+  }
   main .top .slogan {
     padding: 10px;
     .search_bar {
