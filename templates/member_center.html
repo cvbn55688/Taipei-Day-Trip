@@ -2,25 +2,39 @@
 <link rel="stylesheet" href="/CSS/member-center.css" />
 {% endblock %} {% block main %}
 
+<div class="headIMG-full-screen">
+  <div class="upload-table">
+    <label class="img-input-label"
+      ><input
+        id="head-img-input-preview"
+        name="userIMG"
+        type="file"
+        accept="image/jpeg, image/png"
+      />
+      <img id="head-img-preview" src="/IMG/default.png" alt="" />
+    </label>
+    <p>點擊圖片更換大頭貼</p>
+    <div class="ensure">
+      <p class="store">儲存</p>
+      <p class="cancel">取消</p>
+    </div>
+  </div>
+</div>
+
 <section class="member-info">
   <div class="member-title">
     <div>
       <p>個人資訊</p>
     </div>
     <div class="head-img">
-      <label class="img-input-label"
-        ><input
-          id="head-img-input"
-          name="userIMG"
-          type="file"
-          accept="image/jpeg, image/png"
-        />
-        <img id="head-img" src="/IMG/headIMG_load.gif" alt="" />
-        <div class="img-instruct">
-          <!-- <img class="camara-icon" src="/IMG/camara_icon.png" alt="" /> -->
-          上傳圖片
-        </div>
-      </label>
+      <input
+        id="head-img-input"
+        name="userIMG"
+        type="file"
+        accept="image/jpeg, image/png"
+      />
+      <img id="head-img" src="/IMG/headIMG_load.gif" alt="" />
+      <div class="img-instruct">上傳圖片</div>
     </div>
   </div>
   <hr />

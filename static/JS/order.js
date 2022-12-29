@@ -4,7 +4,16 @@ const attractionList = getBookingInfo();
 const contactNameInput = document.querySelector(".name");
 const contactEmailInput = document.querySelector(".email");
 const contactPhoneInput = document.querySelector(".phone");
+const cardNumberInput = document.querySelector("#card-number");
+const cardDateInput = document.querySelector("#card-expiration-date");
+const cardCcvInput = document.querySelector("#card-ccv");
 const loadingScreen = document.querySelector(".loading-screen");
+const checkNameIMG = document.querySelector(".check-img-name");
+const checkEmailIMG = document.querySelector(".check-img-email");
+const checkPhoneIMG = document.querySelector(".check-img-phone");
+const checkNumberIMG = document.querySelector(".check-img-number");
+const checkDateIMG = document.querySelector(".check-img-date");
+const checkCcvIMG = document.querySelector(".check-img-ccv");
 TPDirect.setupSDK(
   126793,
   "app_5CVvEuP2FvOwFoi4KKx2hNx6O71LdE9ta67C4rSXczDk2zXknCmRl6Oe6H3R",
@@ -65,8 +74,27 @@ TPDirect.card.setup({
   },
 });
 
+function cardCheck(cardTargetInput, checkTargetIMG, status) {
+  if (status == false) {
+    cardTargetInput.style.border = "2px solid red";
+    checkTargetIMG.src = "../IMG/close.png";
+    return false;
+  } else {
+    cardTargetInput.style.border = "2px solid rgb(28, 218, 40)";
+    checkTargetIMG.src = "../IMG/accept.png";
+    return true;
+  }
+}
+
 TPDirect.card.onUpdate(function (update) {
   if (update.canGetPrime) {
+    if (
+      checkInfo(contactNameInput, checkNameIMG) ||
+      checkInfo(contactEmailInput, checkEmailIMG) ||
+      checkInfo(contactPhoneInput, checkPhoneIMG)
+    ) {
+    }
+
     submitButton.classList.remove("submit_disabled");
     submitButton.addEventListener("click", onSubmit);
   } else {
@@ -75,44 +103,58 @@ TPDirect.card.onUpdate(function (update) {
   }
 
   if (update.status.number === 2) {
-    // setNumberFormGroupToError()
+    cardCheck(cardNumberInput, checkNumberIMG, false);
   } else if (update.status.number === 0) {
-    // setNumberFormGroupToSuccess()
+    cardCheck(cardNumberInput, checkNumberIMG, true);
   }
 
   if (update.status.expiry === 2) {
-    // setNumberFormGroupToError()
+    cardCheck(cardDateInput, checkDateIMG, false);
   } else if (update.status.expiry === 0) {
-    // setNumberFormGroupToSuccess()
-  } else {
-    // setNumberFormGroupToNormal()
+    cardCheck(cardDateInput, checkDateIMG, true);
   }
 
   if (update.status.ccv === 2) {
-    // setNumberFormGroupToError()
+    cardCheck(cardCcvInput, checkCcvIMG, false);
   } else if (update.status.ccv === 0) {
-    // setNumberFormGroupToSuccess()
-  } else {
-    // setNumberFormGroupToNormal()
+    cardCheck(cardCcvInput, checkCcvIMG, true);
   }
 });
 
+function appendErrorMes(checkInput, checkTarget, checkMes) {
+  checkrespond = document.createElement("p");
+  checkrespond.classList.add("check-error");
+  checkrespond.textContent = checkMes;
+  checkTarget.appendChild(checkrespond);
+  checkInput.style.border = "2px solid red";
+}
+
+function checkInfo(checkTargetInput, checkTargetIMG) {
+  checkTargetInput.addEventListener("blur", () => {
+    if (checkTargetInput.value == "") {
+      cardCheck(checkTargetInput, checkTargetIMG, false);
+    } else if (
+      checkTargetInput == contactEmailInput &&
+      !emailRegex.test(checkTargetInput.value)
+    ) {
+      cardCheck(checkTargetInput, checkTargetIMG, false);
+    } else if (
+      checkTargetInput == contactPhoneInput &&
+      !numberRegex.test(checkTargetInput.value)
+    ) {
+      cardCheck(checkTargetInput, checkTargetIMG, false);
+    } else {
+      cardCheck(checkTargetInput, checkTargetIMG, true);
+    }
+  });
+}
+
+checkInfo(contactNameInput, checkNameIMG);
+checkInfo(contactEmailInput, checkEmailIMG);
+checkInfo(contactPhoneInput, checkPhoneIMG);
+
 function onSubmit() {
   const tappayStatus = TPDirect.card.getTappayFieldsStatus();
-  if (
-    contactEmailInput.value == "" ||
-    contactNameInput.value == "" ||
-    contactPhoneInput.value == ""
-  ) {
-    alert("姓名、信箱、手機號碼不可空白");
-    return;
-  } else if (!emailRegex.test(contactEmailInput.value)) {
-    alert("信箱不符合格式，請包含'@'、'.com'");
-    return;
-  } else if (!numberRegex.test(contactPhoneInput.value)) {
-    alert("電話號碼不符合格式，請輸入電話號碼十碼");
-    return;
-  }
   loadingScreen.style.display = "flex";
   if (tappayStatus.canGetPrime === false) {
     alert("can not get prime");

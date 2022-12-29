@@ -4,7 +4,6 @@ from flask_jwt_extended import get_jwt_identity, jwt_required
 from flask_jwt_extended import decode_token, JWTManager
 from model.member_system import User
 import boto3
-import time
 import os 
 from dotenv import load_dotenv
 load_dotenv()
@@ -68,36 +67,6 @@ def refresh():
     res.set_cookie("access_token", value=access_token)
     return res
 
-@member_system.route("/img_uploads", methods=["POST"])
-def uploads_headIMG():
-    user = User()
-    user_data = request.cookies.get('access_token')
-    if user_data != None:
-        user_data = decode_token(user_data)["sub"]
-        user_id = user_data["user_id"]
-        now_time = str(time.time()).replace(".", "")
-        request_userdata = request.get_json()
-        img_base64 = request_userdata["imgBase64"]
-        access_key_id = os.getenv("aws_access_key_id")
-        secret_access_key = os.getenv("aws_secret_access_key")
-        s3 = boto3.client(
-            "s3",
-            aws_access_key_id=access_key_id,
-            aws_secret_access_key=secret_access_key,
-        )
-        s3.put_object(
-            Bucket="mywebsiteforwehelp",
-            Key="website_user_headIMG/"+now_time+".jpg",
-            Body=img_base64, 
-        )
-        update_res, update_status = user.upload_user_headIMG(user_id, now_time)
-        if update_status == 200:
-            return update_res, 200
-        else:
-            return update_res, 500
-    else:
-        return {"error": True,"message": "使用者尚未登入"}, 403
-
 @member_system.route("/api/user_update", methods=["PUT"])
 def update_info():
     user = User()
@@ -121,6 +90,19 @@ def update_info():
     else:
         return {"error": True,"message": "使用者尚未登入"}, 403
 
+@member_system.route("/img_uploads", methods=["POST"])
+def uploads_headIMG():
+    user = User()
+    user_data = request.cookies.get('access_token')
+    if user_data != None:
+        user_data = decode_token(user_data)["sub"]
+        user_id = user_data["user_id"]
+        request_userdata = request.get_json()
+        img_base64 = request_userdata["imgBase64"]
+        return user.upload_user_headIMG(user_id, img_base64)
+    else:
+        return {"error": True,"message": "使用者尚未登入"}, 403
+
 @member_system.route("/api/user/headIMG", methods=["GET"])
 def get_headIMG():
     user = User()
@@ -128,17 +110,6 @@ def get_headIMG():
     if user_data != None:
         user_data = decode_token(user_data)["sub"]
         user_id = user_data["user_id"]
-        get_data_res, get_data_status = user.get_user_headIMG(user_id)
-        if get_data_status == 200:
-            get_data_res = get_data_res["head_img"]
-            session = boto3.Session(aws_access_key_id = os.getenv("aws_access_key_id"),
-                        aws_secret_access_key = os.getenv("aws_secret_access_key"))
-            s3 = session.client("s3")     
-            s3_object = s3.get_object(Bucket="mywebsiteforwehelp", Key = f"website_user_headIMG/{get_data_res}.jpg")
-            image_data = s3_object['Body'].read()
-            image_data = str(image_data, "utf-8")
-            return {"data" : {"head_img" :image_data}}, 200
-        else:
-            return get_data_res, 500
+        return user.get_user_headIMG(user_id)
     else:
         return {"error": True,"message": "使用者尚未登入"}, 403
