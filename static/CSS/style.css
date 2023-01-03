@@ -845,7 +845,19 @@ main .mid_journey .contact_info form span .tappay-field-focus,
 main .mid_journey .contact_info form p .tappay-field-focus,
 main .mid_journey .payment form span .tappay-field-focus,
 main .mid_journey .payment form p .tappay-field-focus {
-  border: 2px solid black;
+  border: 2px solid rgb(0, 0, 0);
+}
+main .mid_journey .contact_info form span img,
+main .mid_journey .contact_info form p img,
+main .mid_journey .payment form span img,
+main .mid_journey .payment form p img {
+  width: 25px;
+  margin-left: 10px;
+}
+main .mid_journey .contact_info form .check-error,
+main .mid_journey .payment form .check-error {
+  margin: 0 10px;
+  color: red;
 }
 main .mid_journey .contact_info form .notice,
 main .mid_journey .payment form .notice {

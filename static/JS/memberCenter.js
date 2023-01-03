@@ -8,7 +8,26 @@ const userEmailInput = document.querySelector(".user-email-input");
 const userPhone = document.querySelector(".user-phone");
 const userPhoneInput = document.querySelector(".user-phone-input");
 const userHeadImgInput = document.querySelector("#head-img-input");
+const userHeadImgPreviewInput = document.querySelector(
+  "#head-img-input-preview"
+);
 const userHeadImg = document.querySelector("#head-img");
+const userHeadImgPreview = document.querySelector("#head-img-preview");
+const userHeadImgStore = document.querySelector(".store");
+const userHeadImgCancel = document.querySelector(".cancel");
+const showUploadTable = document.querySelector(".img-instruct");
+const headIMGFullScreen = document.querySelector(".headIMG-full-screen");
+
+showUploadTable.addEventListener("click", () => {
+  headIMGFullScreen.style.display = "flex";
+  headIMGFullScreen.style.animation = "show-full-screen 0.5s forwards";
+});
+userHeadImgCancel.addEventListener("click", () => {
+  setTimeout(() => {
+    headIMGFullScreen.style.display = "None";
+  }, 500);
+  headIMGFullScreen.style.animation = "close-full-screen 0.5s forwards";
+});
 
 let countName = 0;
 let countEmail = 0;
@@ -83,29 +102,33 @@ phoneEdit.addEventListener("click", () => {
   }
 });
 
-userHeadImgInput.addEventListener("change", (eve) => {
+userHeadImgPreviewInput.addEventListener("change", (eve) => {
   let file = eve.target.files[0];
-
   let reader = new FileReader();
   reader.addEventListener("load", () => {
-    userHeadImg.src = reader.result;
+    userHeadImgPreview.src = reader.result;
     imgBase64 = reader.result;
-    console.log(imgBase64);
-    fetch(`/img_uploads`, {
-      method: "POST",
-      body: JSON.stringify({
-        imgBase64: imgBase64,
-      }),
-      headers: {
-        "Content-type": "application/json; charset=UTF-8",
-      },
-    })
-      .then(function (response) {
-        return response.json();
+    userHeadImgStore.addEventListener("click", () => {
+      fetch(`/img_uploads`, {
+        method: "POST",
+        body: JSON.stringify({
+          imgBase64: imgBase64,
+        }),
+        headers: {
+          "Content-type": "application/json; charset=UTF-8",
+        },
       })
-      .then(function (data) {
-        console.log(data);
-      });
+        .then(function (response) {
+          return response.json();
+        })
+        .then(function (data) {
+          console.log(data.ok);
+          if (data.ok) {
+            alert("已成功更換");
+            document.location.href = document.location.href;
+          }
+        });
+    });
   });
   reader.readAsDataURL(file);
 });
@@ -119,7 +142,6 @@ function getUserInfo() {
     })
     .then(function (data) {
       data = data.data;
-      console.log(data);
       userName.textContent = data.name;
       userEmail.textContent = data.email;
       userPhone.textContent = data.user_phone;
@@ -138,7 +160,12 @@ function getUserIMG() {
       return response.json();
     })
     .then(function (data) {
-      userHeadImg.src = data.data.head_img;
+      if (data.data == null) {
+        userHeadImg.src = "/IMG/default.png";
+      } else {
+        userHeadImg.src = data.data.head_img;
+        userHeadImgPreview.src = data.data.head_img;
+      }
     });
 }
 
