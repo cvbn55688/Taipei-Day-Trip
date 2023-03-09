@@ -23,7 +23,7 @@
 ![](https://i.imgur.com/gTSRB0w.gif)
 
 #### Responsive Web Design (RWD)
-![](https://i.imgur.com/24EWR1r.gif)
+![RWD](https://user-images.githubusercontent.com/109027415/223907002-9f59e03f-b84e-4370-a3dd-07863934fce4.gif)
 
 #### Member Center
 ![](https://i.imgur.com/4VA44qT.gif)
