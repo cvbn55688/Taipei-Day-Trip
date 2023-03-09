@@ -11,13 +11,13 @@
 + CCV: 123
 ## Main Features
 #### Infinite Scroll
-![](https://i.imgur.com/YG9pMsj.gif)
+![Infinite_Scroll](https://user-images.githubusercontent.com/109027415/223906928-07e26c0e-d6d5-4f8a-8548-41f3548384cf.gif)
 
 #### Keyword Search
 ![](https://i.imgur.com/FhGfKSt.gif)
 
 #### Image Carousel
-![](https://i.imgur.com/YJ5AdOQ.gif)
+![Image)carousel](https://user-images.githubusercontent.com/109027415/223906948-b34f2e7a-a70a-49bf-b00f-128c53461600.gif)
 
 #### Shopping Cart System
 ![](https://i.imgur.com/gTSRB0w.gif)
