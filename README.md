@@ -40,6 +40,9 @@
 + Deploying application server on AWS EC2 Instance
 + Add SSL certificate to the website (Zero SSL)
 
+## Database Schema
+![image](https://user-images.githubusercontent.com/109027415/227697059-b434324f-f07d-4472-8789-f9eddfeb7fee.png)
+
 ## ![](https://i.imgur.com/mZUkZXY.png) Contact
 何致翰 Zhi-Han Ho
 Email: qwas5598@gmail.com
