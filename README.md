@@ -2,7 +2,7 @@
 #### Taipei-Day-Trip is a website that offers booking services for day trips in Taipei. On this website, you can search for attractions in Taipei and book your trip.
 
 ## Live Demo
-#### website: https://taipei-day-trip.zhan-tw.com/
+#### website: https://taipei-day-trip.zhan-tw.com/ (已停止運行)
 + Test account: test@test.com
 + Password: 123456
 #### Test payment infornation:
